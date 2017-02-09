@@ -13,13 +13,10 @@ import com.aps0.interfaces.IASTblock.IASTbinding;
 import com.aps0.interfaces.IASTfactory;
 import com.aps0.interfaces.IASTboolean;
 import com.aps0.interfaces.IASTexpression;
-import com.aps0.interfaces.IASTfloat;
 import com.aps0.interfaces.IASTinteger;
-import com.aps0.interfaces.IASTinvocation;
 import com.aps0.interfaces.IASToperator;
 import com.aps0.interfaces.IASTprogram;
 import com.aps0.interfaces.IASTsequence;
-import com.aps0.interfaces.IASTstring;
 import com.aps0.interfaces.IASTunaryOperation;
 import com.aps0.interfaces.IASTvariable;
 
@@ -70,15 +67,8 @@ public class ASTfactory implements IASTfactory {
         return new ASTinteger(value); 
     }
 
-    @Override
-	public IASTfloat newFloatConstant(String value) {
-        return new ASTfloat(value);
-    }
 
-    @Override
-	public IASTstring newStringConstant(String value) {
-        return new ASTstring(value);
-    }
+ 
 
     @Override
 	public IASTboolean newBooleanConstant(String value) {
@@ -96,10 +86,5 @@ public class ASTfactory implements IASTfactory {
         return new ASTblock.ASTbinding(variable, initialisation);
     }
     
-    @Override
-	public IASTinvocation newInvocation(IASTexpression function,
-            IASTexpression[] arguments) {
-    	return new ASTinvocation(function, arguments);
-    }
-
+    
 }

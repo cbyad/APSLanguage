@@ -11,9 +11,7 @@ public interface IASTvisitor<Result, Data, Anomaly extends Throwable> {
     Result visit(IASTbinaryOperation iast, Data data) throws Anomaly;
     Result visit(IASTblock iast, Data data) throws Anomaly;
     Result visit(IASTboolean iast, Data data) throws Anomaly;
-    Result visit(IASTfloat iast, Data data) throws Anomaly;
     Result visit(IASTinteger iast, Data data) throws Anomaly;
-    Result visit(IASTinvocation iast, Data data) throws Anomaly;
     Result visit(IASToperator iast, Data data) throws Anomaly;
     Result visit(IASTsequence iast, Data data) throws Anomaly;
     Result visit(IASTunaryOperation iast, Data data) throws Anomaly;

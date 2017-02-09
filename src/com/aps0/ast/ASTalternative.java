@@ -2,9 +2,9 @@
 package com.aps0.ast;
 
 import com.aps0.annotation.OrNull;
-import com.aps0.ast.interfaces.IASTalternative;
-import com.aps0.ast.interfaces.IASTexpression;
-import com.aps0.ast.interfaces.IASTvisitor;
+import com.aps0.interfaces.IASTalternative;
+import com.aps0.interfaces.IASTexpression;
+import com.aps0.interfaces.IASTvisitor;
 
 public class ASTalternative extends ASTexpression
 implements IASTalternative {
