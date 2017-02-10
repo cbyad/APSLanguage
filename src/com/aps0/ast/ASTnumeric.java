@@ -8,6 +8,7 @@ import com.aps0.interfaces.IASTtype;
 import com.aps0.interfaces.IASTvisitor;
 
 public class ASTnumeric extends ASTconstant implements IASTnumeric,IASTtype {
+	
     
     public ASTnumeric (String description) {
         super(description, new BigInteger(description));
@@ -23,6 +24,9 @@ public class ASTnumeric extends ASTconstant implements IASTnumeric,IASTtype {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Override
+	public String getName() {
+		return super.name;
+	}
 
 }

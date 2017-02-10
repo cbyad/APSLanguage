@@ -6,7 +6,7 @@ import com.aps0.interfaces.IASTvariable;
 import com.aps0.interfaces.IASTvisitable;
 
 public class ASTassignment extends ASTstatement 
-implements IASTassignment, IASTvisitable {
+implements IASTassignment{
 
     public ASTassignment (IASTvariable variable, IASTexpression expression) {
         this.variable = variable;

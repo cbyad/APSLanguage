@@ -130,7 +130,7 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static class CmdContext extends ParserRuleContext {
-		public com.aps0.interfaces.IASTCommands node;
+		public com.aps0.interfaces.IASTcommands node;
 		public CmdContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -275,6 +275,7 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static class DecContext extends ParserRuleContext {
+		public com.aps0.interfaces.IASTdeclaration node;
 		public DecContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -283,6 +284,7 @@ public class APSgrammar0Parser extends Parser {
 		public DecContext() { }
 		public void copyFrom(DecContext ctx) {
 			super.copyFrom(ctx);
+			this.node = ctx.node;
 		}
 	}
 	public static class ConstantDecContext extends DecContext {
@@ -363,6 +365,7 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static class StatContext extends ParserRuleContext {
+		public com.aps0.interfaces.IASTstatement node;
 		public StatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -371,6 +374,7 @@ public class APSgrammar0Parser extends Parser {
 		public StatContext() { }
 		public void copyFrom(StatContext ctx) {
 			super.copyFrom(ctx);
+			this.node = ctx.node;
 		}
 	}
 	public static class AlternativeContext extends StatContext {
@@ -482,6 +486,7 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static class TypeContext extends ParserRuleContext {
+		public com.aps0.interfaces.IASTtype node;
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -490,6 +495,7 @@ public class APSgrammar0Parser extends Parser {
 		public TypeContext() { }
 		public void copyFrom(TypeContext ctx) {
 			super.copyFrom(ctx);
+			this.node = ctx.node;
 		}
 	}
 	public static class BoolContext extends TypeContext {
@@ -551,6 +557,7 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static class ExprContext extends ParserRuleContext {
+		public com.aps0.interfaces.IASTexpression node;
 		public ExprContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -559,6 +566,7 @@ public class APSgrammar0Parser extends Parser {
 		public ExprContext() { }
 		public void copyFrom(ExprContext ctx) {
 			super.copyFrom(ctx);
+			this.node = ctx.node;
 		}
 	}
 	public static class ConstNumericContext extends ExprContext {

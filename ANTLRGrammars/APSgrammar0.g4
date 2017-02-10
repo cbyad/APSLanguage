@@ -21,35 +21,36 @@ prog returns [com.aps0.interfaces.IASTprogram node]
 
 
 //commandes
-cmd returns [com.aps0.interfaces.IASTCommands node]
+cmd returns [com.aps0.interfaces.IASTcommands node]
 	
 	: statement=stat (';'? cmds+=cmd)*												#Statement
 	| declaration=dec ';' ( cmds+=cmd )+											#Declaration
 	;
-	 
+	  
 //declaration
-dec : 
-	  'VAR' IDENT typ=type   														 #VariableDec
+dec  returns [com.aps0.interfaces.IASTdeclaration node]
+	:  'VAR' IDENT typ=type   														 #VariableDec
 	| 'CONST' IDENT arg=expr typ=type 							  		 			 #ConstantDec
 	;
 	
 //statement
-stat :
-	'SET' IDENT arg=expr 															#VariableAssign
+stat returns [com.aps0.interfaces.IASTstatement node]
+	:'SET' IDENT arg=expr 															#VariableAssign
 	| 'IF' condition=expr consequence=prog alternant=prog    						#Alternative
 	| 'WHILE' condition=expr body=prog												#While
 	;
-	 
+	   
  //type
- type : 'int' 																		#Int
- 	  | 'bool' 																		#bool
- 	  ;
+type returns [com.aps0.interfaces.IASTtype node]
+	: 'int' 																		#Int
+	 | 'bool' 																		#bool
+ 	 ;
  	   
 //expressions
-expr: 
-	'true'																			#ConsTrue
+expr returns [com.aps0.interfaces.IASTexpression node]
+	:'true'																			#ConsTrue
 	|'false'																		#ConstFalse
-	|constNum=NUM																	#ConstNumeric
+	|constNum=NUM		 															#ConstNumeric
 	|'(' op='not' arg=expr ')'														#Unary
 	|'(' op=('and' | 'or' | 'and')  arg1=expr arg2=expr ')'  						#Binary
 	|'(' op=('add' | 'mul' | 'sub'| 'div'| 'lt' |'eq' ) arg1=expr arg2=expr ')'  	#Binary
@@ -67,9 +68,9 @@ expr:
  /*SYMBOLES : ['[' | ']' | '(' | ')' | ';' | '_'] ;*/
  
  //Mots reserves
- 
+  
   //Identificateurs
- IDENT : [a-z A-Z][a-zA-Z0-9]* ;
+ IDENT : [a-z A-Z][a-zA-Z0-9]* ; 
  
  //Constantes numeriques 
  NUM : '-' ?[0-9]+ ;

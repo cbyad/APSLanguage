@@ -24,5 +24,10 @@ public class ASTboolean extends ASTconstant implements IASTboolean,IASTtype {
 		return null;
 	}
 
+	@Override
+	public String getName() {
+		return super.name;
+	}
+
     
 }

@@ -3,6 +3,7 @@ package com.aps0.ast;
 import com.aps0.interfaces.IASTalternative;
 import com.aps0.interfaces.IASTbinaryOperation;
 import com.aps0.interfaces.IASTcommands;
+import com.aps0.interfaces.IASTconstant;
 import com.aps0.interfaces.IASTfactory;
 import com.aps0.interfaces.IASTboolean;
 import com.aps0.interfaces.IASTexpression;
@@ -10,6 +11,7 @@ import com.aps0.interfaces.IASTnumeric;
 import com.aps0.interfaces.IASToperator;
 import com.aps0.interfaces.IASTprogram;
 import com.aps0.interfaces.IASTstatement;
+import com.aps0.interfaces.IASTtype;
 import com.aps0.interfaces.IASTunaryOperation;
 import com.aps0.interfaces.IASTvariable;
 
@@ -71,6 +73,12 @@ public class ASTfactory implements IASTfactory {
 	public IASTstatement newAssignment(IASTvariable variable,
 			IASTexpression value) {
 		return new ASTassignment(variable, value);
+	}
+
+	@Override
+	public IASTconstant newConstant(String name, IASTexpression expression,
+			IASTtype type) {
+		return new ASTconstant(name, expression, type);
 	}
 
    
