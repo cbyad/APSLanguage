@@ -1,5 +1,10 @@
 package com.aps0.ast;
 
-public class ASTcommands {
+import com.aps0.interfaces.IASTcommands;
+
+
+
+public abstract class ASTcommands extends AST implements IASTcommands{
+
 
 }

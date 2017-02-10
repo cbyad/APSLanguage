@@ -1,24 +1,16 @@
-/* *****************************************************************
- * ILP9 - Implantation d'un langage de programmation.
- * by Christian.Queinnec@paracamplus.com
- * See http://mooc.paracamplus.com/ilp9
- * GPL version 3
- ***************************************************************** */
+
 package com.aps0.interfaces;
 
-import com.aps0.interfaces.IASTblock.IASTbinding;
-
-
 public interface IASTfactory {
+	
     IASTprogram newProgram(
-            IASTexpression expression);
+            IASTcommands command);
     
-    IASTexpression newSequence(IASTexpression[] asts);
 
-    IASTexpression newAlternative(
+    IASTstatement newAlternative(
             IASTexpression condition,
-            IASTexpression consequence,
-            IASTexpression alternant);
+            IASTprogram consequence,
+            IASTprogram alternant);
 
     IASToperator newOperator(String name);
     
@@ -34,22 +26,14 @@ public interface IASTfactory {
             IASTexpression leftOperand,
             IASTexpression rightOperand);
 
-    IASTexpression newIntegerConstant(String value);
-
-    IASTexpression newFloatConstant(String value);
-
-    IASTexpression newStringConstant(String value);
+    IASTexpression newNumericConstant(String value);
 
     IASTexpression newBooleanConstant(String value);
 
-
-    IASTexpression newBlock(IASTbinding[] binding,
-                            IASTexpression body);
-
-    IASTbinding newBinding(IASTvariable v, IASTexpression exp);
+    IASTstatement  newWhile(IASTexpression condition , IASTprogram body);
+   
+    IASTstatement newAssignment(IASTvariable variable , IASTexpression value);
     
-    IASTexpression newInvocation(
-            IASTexpression function,
-            IASTexpression[] arguments);
+    
    
 }

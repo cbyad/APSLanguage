@@ -4,21 +4,22 @@ package com.aps0.ast;
 import com.aps0.annotation.OrNull;
 import com.aps0.interfaces.IASTalternative;
 import com.aps0.interfaces.IASTexpression;
+import com.aps0.interfaces.IASTprogram;
 import com.aps0.interfaces.IASTvisitor;
 
-public class ASTalternative extends ASTexpression
+public class ASTalternative extends ASTstatement
 implements IASTalternative {
     
 	public ASTalternative(IASTexpression condition,
-                          IASTexpression consequence,
-                          IASTexpression alternant ) {
+			IASTprogram consequence,
+			IASTprogram alternant ) {
 		this.condition = condition;
 		this.consequence = consequence;
 		this.alternant = alternant;
 	}
 	private final IASTexpression condition;
-	private final IASTexpression consequence;
-	private @OrNull final IASTexpression alternant;
+	private final IASTprogram consequence;
+	private @OrNull final IASTprogram alternant;
 
 	@Override
 	public IASTexpression getCondition() {
@@ -26,12 +27,12 @@ implements IASTalternative {
 	}
 
 	@Override
-	public IASTexpression getConsequence() {
+	public IASTprogram getConsequence() {
 		return consequence;
 	}
 
 	@Override
-	public IASTexpression getAlternant() {
+	public IASTprogram getAlternant() {
 		return alternant;
 	}
 

@@ -1,7 +1,7 @@
-grammar APSgrammar0 ;
+grammar APSgrammar0;
 
 @header {
-	package antlr4 ;
+	package antlr4;
 }
 
 /* 
@@ -14,52 +14,45 @@ grammar APSgrammar0 ;
  * La récursivité directe à gauche est autorisée.
  */
 
-
 //Structure general d'un programme APS0
 prog returns [com.aps0.interfaces.IASTprogram node]
 	: '[' (cmds+=cmd)* ']' * EOF 
 	;
-	
+
+
 //commandes
 cmd returns [com.aps0.interfaces.IASTCommands node]
 	
-	: stat (';'? cmds+=cmd)*								#Statement
-	| dec ';' ( cmds+=cmd )*								#Declaration
+	: statement=stat (';'? cmds+=cmd)*												#Statement
+	| declaration=dec ';' ( cmds+=cmd )+											#Declaration
 	;
-	
+	 
 //declaration
 dec : 
-	'VAR' IDENT type   										#Variable
-	| 'CONST' IDENT expr type 							    #Constant
+	  'VAR' IDENT typ=type   														 #VariableDec
+	| 'CONST' IDENT arg=expr typ=type 							  		 			 #ConstantDec
 	;
 	
 //statement
 stat :
-	'SET' IDENT expr 										#Binding
-	| 'IF' expr prog prog    								#Alternative
-	| 'WHILE' expr prog										#Loop
+	'SET' IDENT arg=expr 															#VariableAssign
+	| 'IF' condition=expr consequence=prog alternant=prog    						#Alternative
+	| 'WHILE' condition=expr body=prog												#While
 	;
-	
+	 
  //type
- type : 'int' 
- 	  | 'bool' 
+ type : 'int' 																		#Int
+ 	  | 'bool' 																		#bool
  	  ;
- 	  
+ 	   
 //expressions
-expr:
-	'true'													#ConsTrue
-	|'false'												#ConstFalse
-	|constNum=NUM											#ConstNumeric
-	/* |var=IDENT												#Variable */
-	|'(' 'not' expr ')'										#Unary
-	|'(' 'and' expr expr ')'  								#Binary
-	|'(' 'or' expr expr ')'  								#Binary
-	|'(' 'add' expr expr ')'  								#Binary
-	|'(' 'mul' expr expr ')'  								#Binary
-	|'(' 'sub' expr expr ')'  								#Binary
-	|'(' 'div' expr expr ')'  								#Binary
-	|'(' 'lt' expr expr ')'  								#Binary
-	|'(' 'eq' expr expr ')'  								#Binary
+expr: 
+	'true'																			#ConsTrue
+	|'false'																		#ConstFalse
+	|constNum=NUM																	#ConstNumeric
+	|'(' op='not' arg=expr ')'														#Unary
+	|'(' op=('and' | 'or' | 'and')  arg1=expr arg2=expr ')'  						#Binary
+	|'(' op=('add' | 'mul' | 'sub'| 'div'| 'lt' |'eq' ) arg1=expr arg2=expr ')'  	#Binary
 	;
 
 /*
@@ -76,7 +69,7 @@ expr:
  //Mots reserves
  
   //Identificateurs
- IDENT : [a-z A-Z] [a-zA-Z0-9]* ;
+ IDENT : [a-z A-Z][a-zA-Z0-9]* ;
  
  //Constantes numeriques 
  NUM : '-' ?[0-9]+ ;

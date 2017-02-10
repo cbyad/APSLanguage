@@ -1,5 +1,11 @@
 package com.aps0.interfaces;
 
-public interface IASTcommands {
+import com.aps0.annotation.OrNull;
 
+public  interface IASTcommands extends IAST , IASTvisitable{
+	// Marker for commands
+	
 }
+
+
+
