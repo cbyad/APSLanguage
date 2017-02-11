@@ -13,8 +13,8 @@ public class ASTdeclaration extends ASTcommands implements IASTdeclaration
 	public <Result, Data, Anomaly extends Throwable> Result accept(
 			IASTvisitor<Result, Data, Anomaly> visitor, Data data)
 			throws Anomaly {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return visitor.visit(this, data);
 	}
 
 

@@ -1,5 +1,5 @@
 package com.aps0.interfaces;
 
-public  interface IASTtype  {
-
+public abstract interface IASTtype extends IASTvisitable  {
+	public String getName();
 }

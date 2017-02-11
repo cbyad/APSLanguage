@@ -34,10 +34,21 @@ public interface IASTfactory {
    
     IASTstatement newAssignment(IASTvariable variable , IASTexpression value);
     
-    IASTconstant newConstant(String name, IASTexpression expression, IASTtype type);
+    IASTconstant newConstant(String name, IASTexpression expression);
     
     
+    IASTtype newType(String name);
     
-    
-   
+
+	IASTconstantDeclaration newConstantDeclaration(String description,
+			IASTexpression expression, IASTtype type);
+	
+	
+
+	
+	
+	
+	
+	
+	
 }

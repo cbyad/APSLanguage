@@ -5,26 +5,15 @@ import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASTtype;
 import com.aps0.interfaces.IASTvisitor;
 
+
+/*
+ * ASTconstant is used for bool/num constante
+ * not the same with data introduiced by 'const'
+ * 
+ */
+
 public class ASTconstant extends ASTexpression 
 implements IASTconstant {
-
-    public ASTconstant(String description, Object value) {
-        this.description = description;
-        this.value = value;
-    }
-    
-    
-    
-    public ASTconstant(String name, IASTexpression expression, IASTtype type) {
-		super();
-		this.description=null;
-		this.value=null;
-		this.name = name;
-		this.expression = expression;
-		this.type = type;
-	}
-
-
 
 	private final String description;
     private final Object value;
@@ -32,6 +21,15 @@ implements IASTconstant {
     protected IASTexpression expression;
     protected IASTtype type;
     
+    public ASTconstant(String description, Object value) {
+        this.description = description;
+        this.value = value;
+    }
+    
+    
+
+    
+
     @Override
 	public String getDescription() {
         return this.description;
@@ -46,8 +44,7 @@ implements IASTconstant {
 	public <Result, Data, Anomaly extends Throwable> Result accept(
 			IASTvisitor<Result, Data, Anomaly> visitor, Data data)
 			throws Anomaly {
-		// TODO Auto-generated method stub
-		return null;
+		return visitor.visit(this, data);
 	}
 
 	@Override

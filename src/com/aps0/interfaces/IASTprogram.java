@@ -1,6 +1,6 @@
 package com.aps0.interfaces;
 
-public interface IASTprogram {
+public abstract interface IASTprogram extends IASTvisitable{
  IASTcommands getBody() ;
  
 }

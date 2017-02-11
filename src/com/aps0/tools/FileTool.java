@@ -1,6 +1,5 @@
 package com.aps0.tools;
 
-import static org.junit.Assert.assertNotNull;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -86,7 +85,6 @@ public class FileTool {
         if (testFiles == null) {
         	throw new IllegalArgumentException("Directory does not exist : " + samplesDirName);
         }
-        assertNotNull(testFiles);
         
         if ( testFiles.length == 0 ) {
             final String msg = "Cannot find a single test like " + pattern + " in " + samplesDirName;

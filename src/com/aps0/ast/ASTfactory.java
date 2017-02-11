@@ -1,13 +1,11 @@
 package com.aps0.ast;
 
-import com.aps0.interfaces.IASTalternative;
 import com.aps0.interfaces.IASTbinaryOperation;
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTconstant;
+import com.aps0.interfaces.IASTconstantDeclaration;
 import com.aps0.interfaces.IASTfactory;
-import com.aps0.interfaces.IASTboolean;
 import com.aps0.interfaces.IASTexpression;
-import com.aps0.interfaces.IASTnumeric;
 import com.aps0.interfaces.IASToperator;
 import com.aps0.interfaces.IASTprogram;
 import com.aps0.interfaces.IASTstatement;
@@ -76,17 +74,24 @@ public class ASTfactory implements IASTfactory {
 	}
 
 	@Override
-	public IASTconstant newConstant(String name, IASTexpression expression,
-			IASTtype type) {
-		return new ASTconstant(name, expression, type);
+	public IASTconstant newConstant(String name, IASTexpression expression
+			) {
+		return new ASTconstant(name, expression);
+	}
+
+	@Override
+	public IASTtype newType(String name) {
+		return new ASTtype(name);
+	}
+
+	@Override
+	public IASTconstantDeclaration newConstantDeclaration(String description,
+			IASTexpression expression, IASTtype type) {
+		return new ASTconstantDeclaration(description, expression, type);
 	}
 
    
 
-
- 
-
-    
     
     
 }

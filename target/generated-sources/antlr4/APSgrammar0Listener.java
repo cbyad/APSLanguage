@@ -35,18 +35,6 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 */
 	void exitAlternative(@NotNull APSgrammar0Parser.AlternativeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code bool}
-	 * labeled alternative in {@link APSgrammar0Parser#type}.
-	 * @param ctx the parse tree
-	 */
-	void enterBool(@NotNull APSgrammar0Parser.BoolContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code bool}
-	 * labeled alternative in {@link APSgrammar0Parser#type}.
-	 * @param ctx the parse tree
-	 */
-	void exitBool(@NotNull APSgrammar0Parser.BoolContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Statement}
 	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
 	 * @param ctx the parse tree
@@ -58,6 +46,30 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitStatement(@NotNull APSgrammar0Parser.StatementContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code TypeBool}
+	 * labeled alternative in {@link APSgrammar0Parser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeBool(@NotNull APSgrammar0Parser.TypeBoolContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TypeBool}
+	 * labeled alternative in {@link APSgrammar0Parser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeBool(@NotNull APSgrammar0Parser.TypeBoolContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code TypeInt}
+	 * labeled alternative in {@link APSgrammar0Parser#type}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeInt(@NotNull APSgrammar0Parser.TypeIntContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code TypeInt}
+	 * labeled alternative in {@link APSgrammar0Parser#type}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeInt(@NotNull APSgrammar0Parser.TypeIntContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code VariableAssign}
 	 * labeled alternative in {@link APSgrammar0Parser#stat}.
@@ -116,18 +128,6 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitProg(@NotNull APSgrammar0Parser.ProgContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Int}
-	 * labeled alternative in {@link APSgrammar0Parser#type}.
-	 * @param ctx the parse tree
-	 */
-	void enterInt(@NotNull APSgrammar0Parser.IntContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Int}
-	 * labeled alternative in {@link APSgrammar0Parser#type}.
-	 * @param ctx the parse tree
-	 */
-	void exitInt(@NotNull APSgrammar0Parser.IntContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Unary}
 	 * labeled alternative in {@link APSgrammar0Parser#expr}.

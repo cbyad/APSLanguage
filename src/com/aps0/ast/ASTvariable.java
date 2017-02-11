@@ -22,7 +22,7 @@ public class ASTvariable extends ASTnamed implements IASTvariable {
         return visitor.visit(this, data);
     }
     
-    /*
+    
     @Override
     public String toString() {
         StringBuffer sb = new StringBuffer();
@@ -33,5 +33,5 @@ public class ASTvariable extends ASTnamed implements IASTvariable {
         sb.append("'/>");
         return sb.toString();
     }
-    */
+    
 }

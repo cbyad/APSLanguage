@@ -288,6 +288,7 @@ public class APSgrammar0Parser extends Parser {
 		}
 	}
 	public static class ConstantDecContext extends DecContext {
+		public Token ident;
 		public ExprContext arg;
 		public TypeContext typ;
 		public ExprContext expr() {
@@ -308,6 +309,7 @@ public class APSgrammar0Parser extends Parser {
 		}
 	}
 	public static class VariableDecContext extends DecContext {
+		public Token ident;
 		public TypeContext typ;
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
@@ -335,7 +337,7 @@ public class APSgrammar0Parser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(46); match(T__9);
-				setState(47); match(IDENT);
+				setState(47); ((VariableDecContext)_localctx).ident = match(IDENT);
 				setState(48); ((VariableDecContext)_localctx).typ = type();
 				}
 				break;
@@ -344,7 +346,7 @@ public class APSgrammar0Parser extends Parser {
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(49); match(T__11);
-				setState(50); match(IDENT);
+				setState(50); ((ConstantDecContext)_localctx).ident = match(IDENT);
 				setState(51); ((ConstantDecContext)_localctx).arg = expr();
 				setState(52); ((ConstantDecContext)_localctx).typ = type();
 				}
@@ -401,6 +403,7 @@ public class APSgrammar0Parser extends Parser {
 		}
 	}
 	public static class VariableAssignContext extends StatContext {
+		public Token ident;
 		public ExprContext arg;
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
@@ -447,7 +450,7 @@ public class APSgrammar0Parser extends Parser {
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(56); match(T__0);
-				setState(57); match(IDENT);
+				setState(57); ((VariableAssignContext)_localctx).ident = match(IDENT);
 				setState(58); ((VariableAssignContext)_localctx).arg = expr();
 				}
 				break;
@@ -498,26 +501,26 @@ public class APSgrammar0Parser extends Parser {
 			this.node = ctx.node;
 		}
 	}
-	public static class BoolContext extends TypeContext {
-		public BoolContext(TypeContext ctx) { copyFrom(ctx); }
+	public static class TypeBoolContext extends TypeContext {
+		public TypeBoolContext(TypeContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterBool(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterTypeBool(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitBool(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitTypeBool(this);
 		}
 	}
-	public static class IntContext extends TypeContext {
-		public IntContext(TypeContext ctx) { copyFrom(ctx); }
+	public static class TypeIntContext extends TypeContext {
+		public TypeIntContext(TypeContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterInt(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterTypeInt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitInt(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitTypeInt(this);
 		}
 	}
 
@@ -528,14 +531,14 @@ public class APSgrammar0Parser extends Parser {
 			setState(72);
 			switch (_input.LA(1)) {
 			case T__7:
-				_localctx = new IntContext(_localctx);
+				_localctx = new TypeIntContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(70); match(T__7);
 				}
 				break;
 			case T__13:
-				_localctx = new BoolContext(_localctx);
+				_localctx = new TypeBoolContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(71); match(T__13);

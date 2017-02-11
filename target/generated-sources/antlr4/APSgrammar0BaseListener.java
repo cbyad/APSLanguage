@@ -43,18 +43,6 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBool(@NotNull APSgrammar0Parser.BoolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitBool(@NotNull APSgrammar0Parser.BoolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterStatement(@NotNull APSgrammar0Parser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -62,6 +50,30 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitStatement(@NotNull APSgrammar0Parser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTypeBool(@NotNull APSgrammar0Parser.TypeBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTypeBool(@NotNull APSgrammar0Parser.TypeBoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTypeInt(@NotNull APSgrammar0Parser.TypeIntContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTypeInt(@NotNull APSgrammar0Parser.TypeIntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -122,18 +134,6 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitProg(@NotNull APSgrammar0Parser.ProgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterInt(@NotNull APSgrammar0Parser.IntContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitInt(@NotNull APSgrammar0Parser.IntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

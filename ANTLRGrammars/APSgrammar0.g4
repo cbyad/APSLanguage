@@ -29,22 +29,22 @@ cmd returns [com.aps0.interfaces.IASTcommands node]
 	  
 //declaration
 dec  returns [com.aps0.interfaces.IASTdeclaration node]
-	:  'VAR' IDENT typ=type   														 #VariableDec
-	| 'CONST' IDENT arg=expr typ=type 							  		 			 #ConstantDec
+	:  'VAR' ident=IDENT typ=type   														 #VariableDec
+	| 'CONST' ident=IDENT arg=expr typ=type 							  		 			 #ConstantDec
 	;
 	
 //statement
 stat returns [com.aps0.interfaces.IASTstatement node]
-	:'SET' IDENT arg=expr 															#VariableAssign
+	:'SET' ident=IDENT arg=expr 															#VariableAssign
 	| 'IF' condition=expr consequence=prog alternant=prog    						#Alternative
 	| 'WHILE' condition=expr body=prog												#While
 	;
 	   
- //type
+//type 
 type returns [com.aps0.interfaces.IASTtype node]
-	: 'int' 																		#Int
-	 | 'bool' 																		#bool
- 	 ;
+	: 'int' 																		#TypeInt
+	| 'bool' 																		#TypeBool
+ 	;
  	   
 //expressions
 expr returns [com.aps0.interfaces.IASTexpression node]
@@ -73,7 +73,7 @@ expr returns [com.aps0.interfaces.IASTexpression node]
  IDENT : [a-z A-Z][a-zA-Z0-9]* ; 
  
  //Constantes numeriques 
- NUM : '-' ?[0-9]+ ;
+ NUM : '-'?[0-9]+ ;
  
  //Caracteres separateurs 
  SPACE : [ \t\r\n]+ ->skip ;
