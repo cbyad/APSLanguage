@@ -62,7 +62,9 @@ public class APSListener implements APSgrammar0Listener {
 	}
 	@Override
 	public void exitAlternative(AlternativeContext ctx) {
-		ctx.node=factory.newAlternative(ctx.condition.node, ctx.consequence.node, ctx.alternant.node);
+		ctx.node=factory.newAlternative(ctx.condition.node,
+										ctx.consequence.node,
+										ctx.alternant==null?null:ctx.alternant.node);
 		
 	}
 	
@@ -83,17 +85,18 @@ public class APSListener implements APSgrammar0Listener {
 	}
 	@Override
 	public void exitConsTrue(ConsTrueContext ctx) {
-		ctx.node=factory.newBooleanConstant(ctx.getText()); //true
+		ctx.node=factory.newBooleanConstant("true"); //true
 		
 	}
 	@Override
 	public void exitConstFalse(ConstFalseContext ctx) {
-		ctx.node=factory.newBooleanConstant(ctx.getText()); //false
+		ctx.node=factory.newBooleanConstant("false"); //false
 		
 	}
 	@Override
 	public void exitProg(ProgContext ctx) {
 		// TODO Auto-generated method stub
+		
 		
 	}
 	

@@ -1,15 +1,23 @@
 package com.aps0.parser.aps;
 
 import com.aps0.interfaces.IASTalternative;
+import com.aps0.interfaces.IASTassignment;
 import com.aps0.interfaces.IASTbinaryOperation;
 import com.aps0.interfaces.IASTboolean;
+import com.aps0.interfaces.IASTcommands;
+import com.aps0.interfaces.IASTconstant;
+import com.aps0.interfaces.IASTconstantDeclaration;
+import com.aps0.interfaces.IASTdeclaration;
 import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASTnumeric;
 import com.aps0.interfaces.IASToperator;
 import com.aps0.interfaces.IASTprogram;
+import com.aps0.interfaces.IASTstatement;
+import com.aps0.interfaces.IASTtype;
 import com.aps0.interfaces.IASTunaryOperation;
 import com.aps0.interfaces.IASTvariable;
 import com.aps0.interfaces.IASTvisitor;
+import com.aps0.interfaces.IASTwhile;
 import com.aps0.tools.MLPrinter;
 
 /* 
@@ -142,6 +150,61 @@ implements IASTvisitor<Object,MLPrinter,Exception> {
 	@Override
 	public Object visit(IASTvariable iast, MLPrinter printer) throws Exception {
 		printer.append(iast.getMangledName());
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTwhile iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTassignment iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTconstant iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTdeclaration iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTstatement iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTcommands iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTexpression iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTtype iast, MLPrinter data) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Object visit(IASTconstantDeclaration iast, MLPrinter data)
+			throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
