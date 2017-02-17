@@ -6,7 +6,14 @@ public interface IASTfactory {
     IASTprogram newProgram(
             IASTcommands command);
     
-
+    IASTcommands newCommands(
+    		IASTcommand premcmd,
+    		IASTcommands listCmds);
+        
+  
+    
+    
+    
     IASTstatement newAlternative(
             IASTexpression condition,
             IASTprogram consequence,
@@ -45,6 +52,11 @@ public interface IASTfactory {
 	
 	
 
+	IASTvariableDec newVariableDec(String description, IASTtype type);
+
+	IASTcommand newDecCmds(IASTdeclaration declaration, IASTcommands listcmds);
+
+	IASTcommand newStatCmds(IASTstatement statement, IASTcommands listcmds);
 	
 	
 	

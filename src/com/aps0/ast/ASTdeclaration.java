@@ -1,27 +1,18 @@
 package com.aps0.ast;
-import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTdeclaration;
-import com.aps0.interfaces.IASTvisitor;
 
 
-public class ASTdeclaration extends ASTcommands implements IASTdeclaration
+public class ASTdeclaration extends AST implements IASTdeclaration
 {
 
-	protected  IASTcommands[] cmds ;
-	
+	IASTdeclaration declaration;
+
 	@Override
-	public <Result, Data, Anomaly extends Throwable> Result accept(
-			IASTvisitor<Result, Data, Anomaly> visitor, Data data)
-			throws Anomaly {
-		
-		return visitor.visit(this, data);
+	public String toProlog() {
+		// TODO Auto-generated method stub
+		return "";
 	}
 
-
-
-	public IASTcommands[] getCmds() {
-		return cmds;
-	}
 
 	
 }

@@ -43,13 +43,13 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterStatement(@NotNull APSgrammar0Parser.StatementContext ctx) { }
+	@Override public void enterCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitStatement(@NotNull APSgrammar0Parser.StatementContext ctx) { }
+	@Override public void exitCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -127,18 +127,6 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterProg(@NotNull APSgrammar0Parser.ProgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitProg(@NotNull APSgrammar0Parser.ProgContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterUnary(@NotNull APSgrammar0Parser.UnaryContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -146,6 +134,42 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUnary(@NotNull APSgrammar0Parser.UnaryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecCmds(@NotNull APSgrammar0Parser.DecCmdsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecCmds(@NotNull APSgrammar0Parser.DecCmdsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterStatCmds(@NotNull APSgrammar0Parser.StatCmdsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitStatCmds(@NotNull APSgrammar0Parser.StatCmdsContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -170,18 +194,6 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitConstNumeric(@NotNull APSgrammar0Parser.ConstNumericContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDeclaration(@NotNull APSgrammar0Parser.DeclarationContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDeclaration(@NotNull APSgrammar0Parser.DeclarationContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

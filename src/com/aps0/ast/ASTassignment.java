@@ -23,6 +23,12 @@ implements IASTassignment{
 	public IASTexpression getExpression() {
         return expression;
     }
-    
+
+	@Override
+	public String toProlog() {
+		return "set(\""+">>variable>>"+","+">>expression<<"+")";
+		//return "set(\""+variable.toProlog()+","+expression.toProlog()+")";
+	}
+    //TODO
     
 }

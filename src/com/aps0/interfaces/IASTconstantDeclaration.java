@@ -4,7 +4,7 @@ public interface IASTconstantDeclaration extends IASTdeclaration{
 	//example :    CONST a 2 int
 	
 	/** The accurate description of the constant */
-    String getDescription(); //a 
+    public String getDescription(); //a 
     
 	public IASTexpression getExpression(); //2
 	public IASTtype getType(); //int

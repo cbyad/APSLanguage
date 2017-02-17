@@ -35,17 +35,17 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 */
 	void exitAlternative(@NotNull APSgrammar0Parser.AlternativeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Statement}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * Enter a parse tree produced by the {@code Commandes}
+	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
 	 * @param ctx the parse tree
 	 */
-	void enterStatement(@NotNull APSgrammar0Parser.StatementContext ctx);
+	void enterCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code Statement}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * Exit a parse tree produced by the {@code Commandes}
+	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
 	 * @param ctx the parse tree
 	 */
-	void exitStatement(@NotNull APSgrammar0Parser.StatementContext ctx);
+	void exitCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code TypeBool}
 	 * labeled alternative in {@link APSgrammar0Parser#type}.
@@ -119,16 +119,6 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 */
 	void exitConstFalse(@NotNull APSgrammar0Parser.ConstFalseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link APSgrammar0Parser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void enterProg(@NotNull APSgrammar0Parser.ProgContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link APSgrammar0Parser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void exitProg(@NotNull APSgrammar0Parser.ProgContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Unary}
 	 * labeled alternative in {@link APSgrammar0Parser#expr}.
 	 * @param ctx the parse tree
@@ -140,6 +130,42 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUnary(@NotNull APSgrammar0Parser.UnaryContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Programme}
+	 * labeled alternative in {@link APSgrammar0Parser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void enterProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Programme}
+	 * labeled alternative in {@link APSgrammar0Parser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void exitProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DecCmds}
+	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecCmds(@NotNull APSgrammar0Parser.DecCmdsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DecCmds}
+	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecCmds(@NotNull APSgrammar0Parser.DecCmdsContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code StatCmds}
+	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * @param ctx the parse tree
+	 */
+	void enterStatCmds(@NotNull APSgrammar0Parser.StatCmdsContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code StatCmds}
+	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * @param ctx the parse tree
+	 */
+	void exitStatCmds(@NotNull APSgrammar0Parser.StatCmdsContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code VariableDec}
 	 * labeled alternative in {@link APSgrammar0Parser#dec}.
@@ -164,18 +190,6 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitConstNumeric(@NotNull APSgrammar0Parser.ConstNumericContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Declaration}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
-	 * @param ctx the parse tree
-	 */
-	void enterDeclaration(@NotNull APSgrammar0Parser.DeclarationContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Declaration}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
-	 * @param ctx the parse tree
-	 */
-	void exitDeclaration(@NotNull APSgrammar0Parser.DeclarationContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Binary}
 	 * labeled alternative in {@link APSgrammar0Parser#expr}.

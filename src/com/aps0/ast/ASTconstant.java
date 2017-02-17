@@ -3,7 +3,6 @@ package com.aps0.ast;
 import com.aps0.interfaces.IASTconstant;
 import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASTtype;
-import com.aps0.interfaces.IASTvisitor;
 
 
 /*
@@ -40,15 +39,23 @@ implements IASTconstant {
         return this.value;
     }
 
-	@Override
-	public <Result, Data, Anomaly extends Throwable> Result accept(
-			IASTvisitor<Result, Data, Anomaly> visitor, Data data)
-			throws Anomaly {
-		return visitor.visit(this, data);
-	}
 
 	@Override
 	public String getName() {
 		return name;
 	}
+
+
+
+
+
+	@Override
+	public String toProlog() {
+		// TODO Auto-generated method stub
+		return "ASTconstant";
+	}
+
+
+
+
 }

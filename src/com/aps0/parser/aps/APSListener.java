@@ -11,13 +11,14 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import antlr4.APSgrammar0Listener;
 import antlr4.APSgrammar0Parser.AlternativeContext;
 import antlr4.APSgrammar0Parser.BinaryContext;
+import antlr4.APSgrammar0Parser.CommandesContext;
 import antlr4.APSgrammar0Parser.ConsTrueContext;
 import antlr4.APSgrammar0Parser.ConstFalseContext;
 import antlr4.APSgrammar0Parser.ConstNumericContext;
 import antlr4.APSgrammar0Parser.ConstantDecContext;
-import antlr4.APSgrammar0Parser.DeclarationContext;
-import antlr4.APSgrammar0Parser.ProgContext;
-import antlr4.APSgrammar0Parser.StatementContext;
+import antlr4.APSgrammar0Parser.DecCmdsContext;
+import antlr4.APSgrammar0Parser.ProgrammeContext;
+import antlr4.APSgrammar0Parser.StatCmdsContext;
 import antlr4.APSgrammar0Parser.TypeBoolContext;
 import antlr4.APSgrammar0Parser.TypeIntContext;
 import antlr4.APSgrammar0Parser.UnaryContext;
@@ -54,10 +55,35 @@ public class APSListener implements APSgrammar0Listener {
 	 */
 	protected IASTfactory factory;
 	
+	@Override
+	public void exitProgramme(ProgrammeContext ctx) {
+		ctx.node=factory.newProgram(ctx.listcmds.node);
+	}
+	
+	@Override
+	public void exitCommandes(CommandesContext ctx) {
+		ctx.node=factory.newCommands(ctx.premcmd.node, ctx.listcmds.node);
+	}
 
+	
+	
+	@Override
+	public void exitDecCmds(DecCmdsContext ctx) {
+		ctx.node=factory.newDecCmds(ctx.declaration.node, ctx.listcmds.node);
+	}
+	
+	@Override
+	public void exitStatCmds(StatCmdsContext ctx) {
+		ctx.node=factory.newStatCmds(ctx.statement.node,
+				
+				ctx.listcmds==null? null:ctx.listcmds.node);
+	}
+	
 	@Override
 	public void exitConstantDec(ConstantDecContext ctx) {
-		ctx.node=factory.newConstantDeclaration(ctx.getText(), ctx.arg.node, ctx.typ.node);
+		ctx.node=factory.newConstantDeclaration(ctx.getText(), 
+												ctx.arg.node,
+												ctx.typ.node);
 		
 	}
 	@Override
@@ -68,11 +94,7 @@ public class APSListener implements APSgrammar0Listener {
 		
 	}
 	
-	@Override
-	public void exitStatement(StatementContext ctx) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	@Override
 	public void exitVariableAssign(VariableAssignContext ctx) {
 		ctx.node=factory.newAssignment(factory.newVariable(ctx.ident.getText()), ctx.arg.node);
@@ -93,12 +115,6 @@ public class APSListener implements APSgrammar0Listener {
 		ctx.node=factory.newBooleanConstant("false"); //false
 		
 	}
-	@Override
-	public void exitProg(ProgContext ctx) {
-		// TODO Auto-generated method stub
-		
-		
-	}
 	
 	@Override
 	public void exitUnary(UnaryContext ctx) {
@@ -106,18 +122,12 @@ public class APSListener implements APSgrammar0Listener {
 	}
 	@Override
 	public void exitVariableDec(VariableDecContext ctx) {
-		// TODO Auto-generated method stub
-		//ctx.node =factory.newVariable(ctx.getText()); revoir VAriableDEC
+		ctx.node =factory.newVariableDec(ctx.getText(), ctx.typ.node);
 		
 	}
 	@Override
 	public void exitConstNumeric(ConstNumericContext ctx) {
 		ctx.node =factory.newNumericConstant(ctx.constNum.getText());
-		
-	}
-	@Override
-	public void exitDeclaration(DeclarationContext ctx) {
-		// TODO Auto-generated method stub
 		
 	}
 	@Override
@@ -143,19 +153,22 @@ public class APSListener implements APSgrammar0Listener {
 	public void visitTerminal(TerminalNode arg0) {}
 	public void enterConstantDec(ConstantDecContext ctx) {}
 	public void enterAlternative(AlternativeContext ctx) {}
-	public void enterStatement(StatementContext ctx) {}
 	public void enterVariableAssign(VariableAssignContext ctx) {}
 	public void enterWhile(WhileContext ctx) {}
 	public void enterConsTrue(ConsTrueContext ctx) {}
 	public void enterConstFalse(ConstFalseContext ctx) {}
-	public void enterProg(ProgContext ctx) {}
 	public void enterUnary(UnaryContext ctx){}
 	public void enterVariableDec(VariableDecContext ctx){}
 	public void enterConstNumeric(ConstNumericContext ctx){}
-	public void enterDeclaration(DeclarationContext ctx){}
 	public void enterBinary(BinaryContext ctx){}
 	public void enterTypeBool(TypeBoolContext ctx) {}
 	public void enterTypeInt(TypeIntContext ctx) {}
+	public void enterCommandes(CommandesContext ctx) {}
+	public void enterProgramme(ProgrammeContext ctx) {}
+	public void enterDecCmds(DecCmdsContext ctx) {}
+	public void enterStatCmds(StatCmdsContext ctx) {}
+
+
 
 	
 	/*

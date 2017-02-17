@@ -1,17 +1,43 @@
 package com.aps0.ast;
 
+import com.aps0.annotation.OrNull;
+import com.aps0.interfaces.IASTcommand;
 import com.aps0.interfaces.IASTcommands;
-import com.aps0.interfaces.IASTvisitor;
 
 public  class ASTcommands extends AST implements IASTcommands{
 
-	@Override
-	public <Result, Data, Anomaly extends Throwable> Result accept(
-			IASTvisitor<Result, Data, Anomaly> visitor, Data data)
-			throws Anomaly {
-		// TODO Auto-generated method stub
-		return visitor.visit(this, data);
+	
+	protected IASTcommand premcmd;
+	protected @OrNull IASTcommands listcmds;
+	
+	
+	public ASTcommands(IASTcommand premcmd, IASTcommands listcmds) {
+		super();
+		this.premcmd = premcmd;
+		this.listcmds = listcmds;
 	}
+
+	public IASTcommand getPremCmd() {
+		return this.premcmd;
+	}
+	
+	public IASTcommands getListcmds() {
+		return listcmds;
+	}
+
+
+	@Override
+	public String toProlog() {
+		if (listcmds!=null)
+			return premcmd.toProlog()+listcmds.toProlog();
+		else
+			return premcmd.toProlog();
+	}
+
+	
+	
+
+
 
 
 }

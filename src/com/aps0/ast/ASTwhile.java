@@ -27,4 +27,11 @@ public class ASTwhile extends ASTstatement implements IASTwhile
 		return body;
 	}
 
+
+	@Override
+	public String toProlog() {
+		// TODO Auto-generated method stub
+		return "ASTwhile";
+	}
+
 }

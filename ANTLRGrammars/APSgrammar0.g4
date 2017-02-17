@@ -16,26 +16,31 @@ grammar APSgrammar0;
 
 //Structure general d'un programme APS0
 prog returns [com.aps0.interfaces.IASTprogram node]
-	: '[' (cmds+=cmd)* ']' * EOF 
+	: '[' listcmds=cmds ']' * EOF 													#Programme
 	;
 
 
+
 //commandes
-cmd returns [com.aps0.interfaces.IASTcommands node]
-	
-	: statement=stat (';'? cmds+=cmd)*												#Statement
-	| declaration=dec ';' ( cmds+=cmd )+											#Declaration
+cmds returns [com.aps0.interfaces.IASTcommands node]
+	: premcmd=cmd (';' listcmds=cmds)?												#Commandes
+	;
+ 
+
+cmd returns [com.aps0.interfaces.IASTcommand node]
+	: declaration=dec ';' listcmds=cmds												#DecCmds
+	| statement=stat (';' listcmds=cmds	)?											#StatCmds	
 	;
 	  
 //declaration
 dec  returns [com.aps0.interfaces.IASTdeclaration node]
-	:  'VAR' ident=IDENT typ=type   														 #VariableDec
-	| 'CONST' ident=IDENT arg=expr typ=type 							  		 			 #ConstantDec
+	:  'VAR' ident=IDENT typ=type   												#VariableDec
+	| 'CONST' ident=IDENT arg=expr typ=type 							  		 	#ConstantDec
 	;
 	
 //statement
 stat returns [com.aps0.interfaces.IASTstatement node]
-	:'SET' ident=IDENT arg=expr 															#VariableAssign
+	:'SET' ident=IDENT arg=expr 													#VariableAssign
 	| 'IF' condition=expr consequence=prog alternant=prog    						#Alternative
 	| 'WHILE' condition=expr body=prog												#While
 	;

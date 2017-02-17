@@ -5,7 +5,6 @@ import com.aps0.annotation.OrNull;
 import com.aps0.interfaces.IASTalternative;
 import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASTprogram;
-import com.aps0.interfaces.IASTvisitor;
 
 public class ASTalternative extends ASTstatement
 implements IASTalternative {
@@ -41,10 +40,11 @@ implements IASTalternative {
 	    return this.alternant != null;
 	}
 
-    @Override
-	public <Result, Data, Anomaly extends Throwable> 
-    Result accept(IASTvisitor<Result, Data, Anomaly> visitor, Data data)
-            throws Anomaly {
-        return visitor.visit(this, data);
-    }
+	@Override
+	public String toProlog() {
+		return "if("+condition.toProlog()+","+">>CONSEQUENCE<<"+","+">>ALTERNANT<<";
+		//return "if("+condition.toProlog()+","+consequence.toProlog()+","+alternant.toProlog();
+	}
+
+  
 }

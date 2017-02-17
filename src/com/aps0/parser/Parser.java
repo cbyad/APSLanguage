@@ -1,7 +1,11 @@
 package com.aps0.parser;
 
 import java.io.File;
+import java.io.IOException;
 
+import com.aps0.ast.ASTfactory;
+import com.aps0.ast.ASTprogram;
+import com.aps0.interfaces.IASTfactory;
 import com.aps0.interfaces.IASTprogram;
 import com.aps0.parser.aps.APSParser;
 import com.aps0.tools.Input;
@@ -36,4 +40,28 @@ public class Parser {
     	throw new ParseException("file extension not recognized");
     }
 
+public static void main(String[] args) {
+    	
+    	IASTfactory factory = new ASTfactory();
+		APSParser aps = new APSParser(factory);
+		Parser parser = new Parser();
+		parser.setAPSParser(aps);
+		
+		try {
+			
+			
+			
+			File file = new File(args[0]);
+		
+			
+			IASTprogram prog = parser.parse(file);
+			
+		//	System.out.println(prog.toProlog());
+
+		
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }

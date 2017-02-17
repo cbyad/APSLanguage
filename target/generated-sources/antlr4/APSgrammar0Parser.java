@@ -30,10 +30,10 @@ public class APSgrammar0Parser extends Parser {
 		"NUM", "SPACE"
 	};
 	public static final int
-		RULE_prog = 0, RULE_cmd = 1, RULE_dec = 2, RULE_stat = 3, RULE_type = 4, 
-		RULE_expr = 5;
+		RULE_prog = 0, RULE_cmds = 1, RULE_cmd = 2, RULE_dec = 3, RULE_stat = 4, 
+		RULE_type = 5, RULE_expr = 6;
 	public static final String[] ruleNames = {
-		"prog", "cmd", "dec", "stat", "type", "expr"
+		"prog", "cmds", "cmd", "dec", "stat", "type", "expr"
 	};
 
 	@Override
@@ -57,26 +57,31 @@ public class APSgrammar0Parser extends Parser {
 	}
 	public static class ProgContext extends ParserRuleContext {
 		public com.aps0.interfaces.IASTprogram node;
-		public CmdContext cmd;
-		public List<CmdContext> cmds = new ArrayList<CmdContext>();
-		public TerminalNode EOF() { return getToken(APSgrammar0Parser.EOF, 0); }
-		public CmdContext cmd(int i) {
-			return getRuleContext(CmdContext.class,i);
-		}
-		public List<CmdContext> cmd() {
-			return getRuleContexts(CmdContext.class);
-		}
 		public ProgContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_prog; }
+	 
+		public ProgContext() { }
+		public void copyFrom(ProgContext ctx) {
+			super.copyFrom(ctx);
+			this.node = ctx.node;
+		}
+	}
+	public static class ProgrammeContext extends ProgContext {
+		public CmdsContext listcmds;
+		public CmdsContext cmds() {
+			return getRuleContext(CmdsContext.class,0);
+		}
+		public TerminalNode EOF() { return getToken(APSgrammar0Parser.EOF, 0); }
+		public ProgrammeContext(ProgContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterProg(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterProgramme(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitProg(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitProgramme(this);
 		}
 	}
 
@@ -85,37 +90,88 @@ public class APSgrammar0Parser extends Parser {
 		enterRule(_localctx, 0, RULE_prog);
 		int _la;
 		try {
+			_localctx = new ProgrammeContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(12); match(T__17);
-			setState(16);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__21) | (1L << T__15) | (1L << T__11) | (1L << T__9) | (1L << T__0))) != 0)) {
-				{
-				{
-				setState(13); ((ProgContext)_localctx).cmd = cmd();
-				((ProgContext)_localctx).cmds.add(((ProgContext)_localctx).cmd);
-				}
-				}
-				setState(18);
-				_errHandler.sync(this);
-				_la = _input.LA(1);
-			}
-			setState(22);
+			setState(14); match(T__17);
+			setState(15); ((ProgrammeContext)_localctx).listcmds = cmds();
+			setState(19);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==T__14) {
 				{
 				{
-				setState(19); match(T__14);
+				setState(16); match(T__14);
 				}
 				}
-				setState(24);
+				setState(21);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(25); match(EOF);
+			setState(22); match(EOF);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class CmdsContext extends ParserRuleContext {
+		public com.aps0.interfaces.IASTcommands node;
+		public CmdsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_cmds; }
+	 
+		public CmdsContext() { }
+		public void copyFrom(CmdsContext ctx) {
+			super.copyFrom(ctx);
+			this.node = ctx.node;
+		}
+	}
+	public static class CommandesContext extends CmdsContext {
+		public CmdContext premcmd;
+		public CmdsContext listcmds;
+		public CmdsContext cmds() {
+			return getRuleContext(CmdsContext.class,0);
+		}
+		public CmdContext cmd() {
+			return getRuleContext(CmdContext.class,0);
+		}
+		public CommandesContext(CmdsContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterCommandes(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitCommandes(this);
+		}
+	}
+
+	public final CmdsContext cmds() throws RecognitionException {
+		CmdsContext _localctx = new CmdsContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_cmds);
+		try {
+			_localctx = new CommandesContext(_localctx);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(24); ((CommandesContext)_localctx).premcmd = cmd();
+			setState(27);
+			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
+			case 1:
+				{
+				setState(25); match(T__18);
+				setState(26); ((CommandesContext)_localctx).listcmds = cmds();
+				}
+				break;
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -130,7 +186,7 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static class CmdContext extends ParserRuleContext {
-		public com.aps0.interfaces.IASTcommands node;
+		public com.aps0.interfaces.IASTcommand node;
 		public CmdContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -142,121 +198,77 @@ public class APSgrammar0Parser extends Parser {
 			this.node = ctx.node;
 		}
 	}
-	public static class StatementContext extends CmdContext {
+	public static class StatCmdsContext extends CmdContext {
 		public StatContext statement;
-		public CmdContext cmd;
-		public List<CmdContext> cmds = new ArrayList<CmdContext>();
+		public CmdsContext listcmds;
+		public CmdsContext cmds() {
+			return getRuleContext(CmdsContext.class,0);
+		}
 		public StatContext stat() {
 			return getRuleContext(StatContext.class,0);
 		}
-		public CmdContext cmd(int i) {
-			return getRuleContext(CmdContext.class,i);
-		}
-		public List<CmdContext> cmd() {
-			return getRuleContexts(CmdContext.class);
-		}
-		public StatementContext(CmdContext ctx) { copyFrom(ctx); }
+		public StatCmdsContext(CmdContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterStatement(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterStatCmds(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitStatement(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitStatCmds(this);
 		}
 	}
-	public static class DeclarationContext extends CmdContext {
+	public static class DecCmdsContext extends CmdContext {
 		public DecContext declaration;
-		public CmdContext cmd;
-		public List<CmdContext> cmds = new ArrayList<CmdContext>();
+		public CmdsContext listcmds;
 		public DecContext dec() {
 			return getRuleContext(DecContext.class,0);
 		}
-		public CmdContext cmd(int i) {
-			return getRuleContext(CmdContext.class,i);
+		public CmdsContext cmds() {
+			return getRuleContext(CmdsContext.class,0);
 		}
-		public List<CmdContext> cmd() {
-			return getRuleContexts(CmdContext.class);
-		}
-		public DeclarationContext(CmdContext ctx) { copyFrom(ctx); }
+		public DecCmdsContext(CmdContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterDeclaration(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterDecCmds(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitDeclaration(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitDecCmds(this);
 		}
 	}
 
 	public final CmdContext cmd() throws RecognitionException {
 		CmdContext _localctx = new CmdContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_cmd);
-		int _la;
+		enterRule(_localctx, 4, RULE_cmd);
 		try {
-			int _alt;
-			setState(44);
+			setState(38);
 			switch (_input.LA(1)) {
+			case T__11:
+			case T__9:
+				_localctx = new DecCmdsContext(_localctx);
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(29); ((DecCmdsContext)_localctx).declaration = dec();
+				setState(30); match(T__18);
+				setState(31); ((DecCmdsContext)_localctx).listcmds = cmds();
+				}
+				break;
 			case T__21:
 			case T__15:
 			case T__0:
-				_localctx = new StatementContext(_localctx);
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(27); ((StatementContext)_localctx).statement = stat();
-				setState(34);
-				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
-				while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER ) {
-					if ( _alt==1 ) {
-						{
-						{
-						setState(29);
-						_la = _input.LA(1);
-						if (_la==T__18) {
-							{
-							setState(28); match(T__18);
-							}
-						}
-
-						setState(31); ((StatementContext)_localctx).cmd = cmd();
-						((StatementContext)_localctx).cmds.add(((StatementContext)_localctx).cmd);
-						}
-						} 
-					}
-					setState(36);
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
-				}
-				}
-				break;
-			case T__11:
-			case T__9:
-				_localctx = new DeclarationContext(_localctx);
+				_localctx = new StatCmdsContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(37); ((DeclarationContext)_localctx).declaration = dec();
-				setState(38); match(T__18);
-				setState(40); 
-				_errHandler.sync(this);
-				_alt = 1;
-				do {
-					switch (_alt) {
-					case 1:
-						{
-						{
-						setState(39); ((DeclarationContext)_localctx).cmd = cmd();
-						((DeclarationContext)_localctx).cmds.add(((DeclarationContext)_localctx).cmd);
-						}
-						}
-						break;
-					default:
-						throw new NoViableAltException(this);
+				setState(33); ((StatCmdsContext)_localctx).statement = stat();
+				setState(36);
+				switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
+				case 1:
+					{
+					setState(34); match(T__18);
+					setState(35); ((StatCmdsContext)_localctx).listcmds = cmds();
 					}
-					setState(42); 
-					_errHandler.sync(this);
-					_alt = getInterpreter().adaptivePredict(_input,4,_ctx);
-				} while ( _alt!=2 && _alt!=org.antlr.v4.runtime.atn.ATN.INVALID_ALT_NUMBER );
+					break;
+				}
 				}
 				break;
 			default:
@@ -328,27 +340,27 @@ public class APSgrammar0Parser extends Parser {
 
 	public final DecContext dec() throws RecognitionException {
 		DecContext _localctx = new DecContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_dec);
+		enterRule(_localctx, 6, RULE_dec);
 		try {
-			setState(54);
+			setState(48);
 			switch (_input.LA(1)) {
 			case T__9:
 				_localctx = new VariableDecContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(46); match(T__9);
-				setState(47); ((VariableDecContext)_localctx).ident = match(IDENT);
-				setState(48); ((VariableDecContext)_localctx).typ = type();
+				setState(40); match(T__9);
+				setState(41); ((VariableDecContext)_localctx).ident = match(IDENT);
+				setState(42); ((VariableDecContext)_localctx).typ = type();
 				}
 				break;
 			case T__11:
 				_localctx = new ConstantDecContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(49); match(T__11);
-				setState(50); ((ConstantDecContext)_localctx).ident = match(IDENT);
-				setState(51); ((ConstantDecContext)_localctx).arg = expr();
-				setState(52); ((ConstantDecContext)_localctx).typ = type();
+				setState(43); match(T__11);
+				setState(44); ((ConstantDecContext)_localctx).ident = match(IDENT);
+				setState(45); ((ConstantDecContext)_localctx).arg = expr();
+				setState(46); ((ConstantDecContext)_localctx).typ = type();
 				}
 				break;
 			default:
@@ -441,36 +453,36 @@ public class APSgrammar0Parser extends Parser {
 
 	public final StatContext stat() throws RecognitionException {
 		StatContext _localctx = new StatContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_stat);
+		enterRule(_localctx, 8, RULE_stat);
 		try {
-			setState(68);
+			setState(62);
 			switch (_input.LA(1)) {
 			case T__0:
 				_localctx = new VariableAssignContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(56); match(T__0);
-				setState(57); ((VariableAssignContext)_localctx).ident = match(IDENT);
-				setState(58); ((VariableAssignContext)_localctx).arg = expr();
+				setState(50); match(T__0);
+				setState(51); ((VariableAssignContext)_localctx).ident = match(IDENT);
+				setState(52); ((VariableAssignContext)_localctx).arg = expr();
 				}
 				break;
 			case T__15:
 				_localctx = new AlternativeContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(59); match(T__15);
-				setState(60); ((AlternativeContext)_localctx).condition = expr();
-				setState(61); ((AlternativeContext)_localctx).consequence = prog();
-				setState(62); ((AlternativeContext)_localctx).alternant = prog();
+				setState(53); match(T__15);
+				setState(54); ((AlternativeContext)_localctx).condition = expr();
+				setState(55); ((AlternativeContext)_localctx).consequence = prog();
+				setState(56); ((AlternativeContext)_localctx).alternant = prog();
 				}
 				break;
 			case T__21:
 				_localctx = new WhileContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(64); match(T__21);
-				setState(65); ((WhileContext)_localctx).condition = expr();
-				setState(66); ((WhileContext)_localctx).body = prog();
+				setState(58); match(T__21);
+				setState(59); ((WhileContext)_localctx).condition = expr();
+				setState(60); ((WhileContext)_localctx).body = prog();
 				}
 				break;
 			default:
@@ -526,22 +538,22 @@ public class APSgrammar0Parser extends Parser {
 
 	public final TypeContext type() throws RecognitionException {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_type);
+		enterRule(_localctx, 10, RULE_type);
 		try {
-			setState(72);
+			setState(66);
 			switch (_input.LA(1)) {
 			case T__7:
 				_localctx = new TypeIntContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(70); match(T__7);
+				setState(64); match(T__7);
 				}
 				break;
 			case T__13:
 				_localctx = new TypeBoolContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(71); match(T__13);
+				setState(65); match(T__13);
 				}
 				break;
 			default:
@@ -646,74 +658,74 @@ public class APSgrammar0Parser extends Parser {
 
 	public final ExprContext expr() throws RecognitionException {
 		ExprContext _localctx = new ExprContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_expr);
+		enterRule(_localctx, 12, RULE_expr);
 		int _la;
 		try {
-			setState(94);
-			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			setState(88);
+			switch ( getInterpreter().adaptivePredict(_input,7,_ctx) ) {
 			case 1:
 				_localctx = new ConsTrueContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(74); match(T__20);
+				setState(68); match(T__20);
 				}
 				break;
 			case 2:
 				_localctx = new ConstFalseContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(75); match(T__1);
+				setState(69); match(T__1);
 				}
 				break;
 			case 3:
 				_localctx = new ConstNumericContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(76); ((ConstNumericContext)_localctx).constNum = match(NUM);
+				setState(70); ((ConstNumericContext)_localctx).constNum = match(NUM);
 				}
 				break;
 			case 4:
 				_localctx = new UnaryContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(77); match(T__5);
-				setState(78); ((UnaryContext)_localctx).op = match(T__2);
-				setState(79); ((UnaryContext)_localctx).arg = expr();
-				setState(80); match(T__4);
+				setState(71); match(T__5);
+				setState(72); ((UnaryContext)_localctx).op = match(T__2);
+				setState(73); ((UnaryContext)_localctx).arg = expr();
+				setState(74); match(T__4);
 				}
 				break;
 			case 5:
 				_localctx = new BinaryContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(82); match(T__5);
-				setState(83);
+				setState(76); match(T__5);
+				setState(77);
 				((BinaryContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==T__12 || _la==T__3) ) {
 					((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 				}
 				consume();
-				setState(84); ((BinaryContext)_localctx).arg1 = expr();
-				setState(85); ((BinaryContext)_localctx).arg2 = expr();
-				setState(86); match(T__4);
+				setState(78); ((BinaryContext)_localctx).arg1 = expr();
+				setState(79); ((BinaryContext)_localctx).arg2 = expr();
+				setState(80); match(T__4);
 				}
 				break;
 			case 6:
 				_localctx = new BinaryContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(88); match(T__5);
-				setState(89);
+				setState(82); match(T__5);
+				setState(83);
 				((BinaryContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__22) | (1L << T__19) | (1L << T__16) | (1L << T__10) | (1L << T__8) | (1L << T__6))) != 0)) ) {
 					((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 				}
 				consume();
-				setState(90); ((BinaryContext)_localctx).arg1 = expr();
-				setState(91); ((BinaryContext)_localctx).arg2 = expr();
-				setState(92); match(T__4);
+				setState(84); ((BinaryContext)_localctx).arg1 = expr();
+				setState(85); ((BinaryContext)_localctx).arg2 = expr();
+				setState(86); match(T__4);
 				}
 				break;
 			}
@@ -730,32 +742,30 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\34c\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\7\2\21\n\2\f\2\16\2\24\13\2"+
-		"\3\2\7\2\27\n\2\f\2\16\2\32\13\2\3\2\3\2\3\3\3\3\5\3 \n\3\3\3\7\3#\n\3"+
-		"\f\3\16\3&\13\3\3\3\3\3\3\3\6\3+\n\3\r\3\16\3,\5\3/\n\3\3\4\3\4\3\4\3"+
-		"\4\3\4\3\4\3\4\3\4\5\49\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
-		"\5\3\5\5\5G\n\5\3\6\3\6\5\6K\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
-		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7a\n\7\3\7\2\2\b\2\4\6\b"+
-		"\n\f\2\4\4\2\r\r\26\26\b\2\3\3\6\6\t\t\17\17\21\21\23\23k\2\16\3\2\2\2"+
-		"\4.\3\2\2\2\68\3\2\2\2\bF\3\2\2\2\nJ\3\2\2\2\f`\3\2\2\2\16\22\7\b\2\2"+
-		"\17\21\5\4\3\2\20\17\3\2\2\2\21\24\3\2\2\2\22\20\3\2\2\2\22\23\3\2\2\2"+
-		"\23\30\3\2\2\2\24\22\3\2\2\2\25\27\7\13\2\2\26\25\3\2\2\2\27\32\3\2\2"+
-		"\2\30\26\3\2\2\2\30\31\3\2\2\2\31\33\3\2\2\2\32\30\3\2\2\2\33\34\7\2\2"+
-		"\3\34\3\3\2\2\2\35$\5\b\5\2\36 \7\7\2\2\37\36\3\2\2\2\37 \3\2\2\2 !\3"+
-		"\2\2\2!#\5\4\3\2\"\37\3\2\2\2#&\3\2\2\2$\"\3\2\2\2$%\3\2\2\2%/\3\2\2\2"+
-		"&$\3\2\2\2\'(\5\6\4\2(*\7\7\2\2)+\5\4\3\2*)\3\2\2\2+,\3\2\2\2,*\3\2\2"+
-		"\2,-\3\2\2\2-/\3\2\2\2.\35\3\2\2\2.\'\3\2\2\2/\5\3\2\2\2\60\61\7\20\2"+
-		"\2\61\62\7\32\2\2\629\5\n\6\2\63\64\7\16\2\2\64\65\7\32\2\2\65\66\5\f"+
-		"\7\2\66\67\5\n\6\2\679\3\2\2\28\60\3\2\2\28\63\3\2\2\29\7\3\2\2\2:;\7"+
-		"\31\2\2;<\7\32\2\2<G\5\f\7\2=>\7\n\2\2>?\5\f\7\2?@\5\2\2\2@A\5\2\2\2A"+
-		"G\3\2\2\2BC\7\4\2\2CD\5\f\7\2DE\5\2\2\2EG\3\2\2\2F:\3\2\2\2F=\3\2\2\2"+
-		"FB\3\2\2\2G\t\3\2\2\2HK\7\22\2\2IK\7\f\2\2JH\3\2\2\2JI\3\2\2\2K\13\3\2"+
-		"\2\2La\7\5\2\2Ma\7\30\2\2Na\7\33\2\2OP\7\24\2\2PQ\7\27\2\2QR\5\f\7\2R"+
-		"S\7\25\2\2Sa\3\2\2\2TU\7\24\2\2UV\t\2\2\2VW\5\f\7\2WX\5\f\7\2XY\7\25\2"+
-		"\2Ya\3\2\2\2Z[\7\24\2\2[\\\t\3\2\2\\]\5\f\7\2]^\5\f\7\2^_\7\25\2\2_a\3"+
-		"\2\2\2`L\3\2\2\2`M\3\2\2\2`N\3\2\2\2`O\3\2\2\2`T\3\2\2\2`Z\3\2\2\2a\r"+
-		"\3\2\2\2\f\22\30\37$,.8FJ`";
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\34]\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\2\7\2\24\n\2\f\2"+
+		"\16\2\27\13\2\3\2\3\2\3\3\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\3\4\3\4\3\4\3"+
+		"\4\5\4\'\n\4\5\4)\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5\5\63\n\5\3\6\3"+
+		"\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\3\6\5\6A\n\6\3\7\3\7\5\7E\n\7\3"+
+		"\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b\3\b"+
+		"\3\b\3\b\5\b[\n\b\3\b\2\2\t\2\4\6\b\n\f\16\2\4\4\2\r\r\26\26\b\2\3\3\6"+
+		"\6\t\t\17\17\21\21\23\23b\2\20\3\2\2\2\4\32\3\2\2\2\6(\3\2\2\2\b\62\3"+
+		"\2\2\2\n@\3\2\2\2\fD\3\2\2\2\16Z\3\2\2\2\20\21\7\b\2\2\21\25\5\4\3\2\22"+
+		"\24\7\13\2\2\23\22\3\2\2\2\24\27\3\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2\26"+
+		"\30\3\2\2\2\27\25\3\2\2\2\30\31\7\2\2\3\31\3\3\2\2\2\32\35\5\6\4\2\33"+
+		"\34\7\7\2\2\34\36\5\4\3\2\35\33\3\2\2\2\35\36\3\2\2\2\36\5\3\2\2\2\37"+
+		" \5\b\5\2 !\7\7\2\2!\"\5\4\3\2\")\3\2\2\2#&\5\n\6\2$%\7\7\2\2%\'\5\4\3"+
+		"\2&$\3\2\2\2&\'\3\2\2\2\')\3\2\2\2(\37\3\2\2\2(#\3\2\2\2)\7\3\2\2\2*+"+
+		"\7\20\2\2+,\7\32\2\2,\63\5\f\7\2-.\7\16\2\2./\7\32\2\2/\60\5\16\b\2\60"+
+		"\61\5\f\7\2\61\63\3\2\2\2\62*\3\2\2\2\62-\3\2\2\2\63\t\3\2\2\2\64\65\7"+
+		"\31\2\2\65\66\7\32\2\2\66A\5\16\b\2\678\7\n\2\289\5\16\b\29:\5\2\2\2:"+
+		";\5\2\2\2;A\3\2\2\2<=\7\4\2\2=>\5\16\b\2>?\5\2\2\2?A\3\2\2\2@\64\3\2\2"+
+		"\2@\67\3\2\2\2@<\3\2\2\2A\13\3\2\2\2BE\7\22\2\2CE\7\f\2\2DB\3\2\2\2DC"+
+		"\3\2\2\2E\r\3\2\2\2F[\7\5\2\2G[\7\30\2\2H[\7\33\2\2IJ\7\24\2\2JK\7\27"+
+		"\2\2KL\5\16\b\2LM\7\25\2\2M[\3\2\2\2NO\7\24\2\2OP\t\2\2\2PQ\5\16\b\2Q"+
+		"R\5\16\b\2RS\7\25\2\2S[\3\2\2\2TU\7\24\2\2UV\t\3\2\2VW\5\16\b\2WX\5\16"+
+		"\b\2XY\7\25\2\2Y[\3\2\2\2ZF\3\2\2\2ZG\3\2\2\2ZH\3\2\2\2ZI\3\2\2\2ZN\3"+
+		"\2\2\2ZT\3\2\2\2[\17\3\2\2\2\n\25\35&(\62@DZ";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

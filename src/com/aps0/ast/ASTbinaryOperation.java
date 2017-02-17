@@ -4,7 +4,6 @@ package com.aps0.ast;
 import com.aps0.interfaces.IASTbinaryOperation;
 import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASToperator;
-import com.aps0.interfaces.IASTvisitor;
 
 public class ASTbinaryOperation extends ASTexpression implements IASTbinaryOperation {
 
@@ -38,11 +37,11 @@ public class ASTbinaryOperation extends ASTexpression implements IASTbinaryOpera
 	public IASTexpression getRightOperand() {
         return rightOperand;
     }
+
+	@Override
+	public String toProlog() {
+		return operator.toProlog()+"("+leftOperand.toProlog()+", "+rightOperand.toProlog()+")";
+	}
     
-    @Override
-	public <Result, Data, Anomaly extends Throwable> 
-    Result accept(IASTvisitor<Result, Data, Anomaly> visitor, Data data)
-            throws Anomaly {
-        return visitor.visit(this, data);
-    }
+  
 }

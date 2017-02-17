@@ -1,5 +1,5 @@
 package com.aps0.interfaces;
 
-public abstract interface IASTstatement extends IASTcommands, IASTvisitable{
+public abstract interface IASTstatement extends IASTcommand{
 
 }
