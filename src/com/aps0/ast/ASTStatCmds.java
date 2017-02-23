@@ -1,11 +1,11 @@
 package com.aps0.ast;
 
 import com.aps0.annotation.OrNull;
-import com.aps0.interfaces.IASTStatCmds;
+import com.aps0.interfaces.IASTstatCmds;
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTstatement;
 
-public class ASTStatCmds extends ASTcommand implements IASTStatCmds {
+public class ASTStatCmds extends ASTcommand implements IASTstatCmds {
 
 	protected IASTstatement statement;
 	protected @OrNull IASTcommands listcmds;

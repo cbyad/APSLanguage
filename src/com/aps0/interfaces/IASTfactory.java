@@ -11,9 +11,6 @@ public interface IASTfactory {
     		IASTcommands listCmds);
         
   
-    
-    
-    
     IASTstatement newAlternative(
             IASTexpression condition,
             IASTprogram consequence,
@@ -23,7 +20,6 @@ public interface IASTfactory {
     
     IASTvariable newVariable(String name);
     
-
     IASTexpression newUnaryOperation(
             IASToperator operator,
             IASTexpression operand);
@@ -43,7 +39,6 @@ public interface IASTfactory {
     
     IASTconstant newConstant(String name, IASTexpression expression);
     
-    
     IASTtype newType(String name);
     
 
@@ -51,7 +46,6 @@ public interface IASTfactory {
 			IASTexpression expression, IASTtype type);
 	
 	
-
 	IASTvariableDec newVariableDec(String description, IASTtype type);
 
 	IASTcommand newDecCmds(IASTdeclaration declaration, IASTcommands listcmds);

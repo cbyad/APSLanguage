@@ -55,6 +55,18 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterProgramm(@NotNull APSgrammar0Parser.ProgrammContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitProgramm(@NotNull APSgrammar0Parser.ProgrammContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterTypeBool(@NotNull APSgrammar0Parser.TypeBoolContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -134,18 +146,6 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitUnary(@NotNull APSgrammar0Parser.UnaryContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -68,20 +68,20 @@ public class APSgrammar0Parser extends Parser {
 			this.node = ctx.node;
 		}
 	}
-	public static class ProgrammeContext extends ProgContext {
+	public static class ProgrammContext extends ProgContext {
 		public CmdsContext listcmds;
 		public CmdsContext cmds() {
 			return getRuleContext(CmdsContext.class,0);
 		}
 		public TerminalNode EOF() { return getToken(APSgrammar0Parser.EOF, 0); }
-		public ProgrammeContext(ProgContext ctx) { copyFrom(ctx); }
+		public ProgrammContext(ProgContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterProgramme(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).enterProgramm(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitProgramme(this);
+			if ( listener instanceof APSgrammar0Listener ) ((APSgrammar0Listener)listener).exitProgramm(this);
 		}
 	}
 
@@ -90,11 +90,11 @@ public class APSgrammar0Parser extends Parser {
 		enterRule(_localctx, 0, RULE_prog);
 		int _la;
 		try {
-			_localctx = new ProgrammeContext(_localctx);
+			_localctx = new ProgrammContext(_localctx);
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(14); match(T__17);
-			setState(15); ((ProgrammeContext)_localctx).listcmds = cmds();
+			setState(15); ((ProgrammContext)_localctx).listcmds = cmds();
 			setState(19);
 			_errHandler.sync(this);
 			_la = _input.LA(1);

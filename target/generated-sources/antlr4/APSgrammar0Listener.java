@@ -47,6 +47,18 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 */
 	void exitCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code Programm}
+	 * labeled alternative in {@link APSgrammar0Parser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void enterProgramm(@NotNull APSgrammar0Parser.ProgrammContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Programm}
+	 * labeled alternative in {@link APSgrammar0Parser#prog}.
+	 * @param ctx the parse tree
+	 */
+	void exitProgramm(@NotNull APSgrammar0Parser.ProgrammContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code TypeBool}
 	 * labeled alternative in {@link APSgrammar0Parser#type}.
 	 * @param ctx the parse tree
@@ -130,18 +142,6 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitUnary(@NotNull APSgrammar0Parser.UnaryContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code Programme}
-	 * labeled alternative in {@link APSgrammar0Parser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void enterProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Programme}
-	 * labeled alternative in {@link APSgrammar0Parser#prog}.
-	 * @param ctx the parse tree
-	 */
-	void exitProgramme(@NotNull APSgrammar0Parser.ProgrammeContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code DecCmds}
 	 * labeled alternative in {@link APSgrammar0Parser#cmd}.

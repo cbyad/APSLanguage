@@ -16,7 +16,7 @@ grammar APSgrammar0;
 
 //Structure general d'un programme APS0
 prog returns [com.aps0.interfaces.IASTprogram node]
-	: '[' listcmds=cmds ']' * EOF 													#Programme
+	: '[' listcmds=cmds ']' * EOF 													#Programm
 	;
 
 
@@ -29,26 +29,26 @@ cmds returns [com.aps0.interfaces.IASTcommands node]
 
 cmd returns [com.aps0.interfaces.IASTcommand node]
 	: declaration=dec ';' listcmds=cmds												#DecCmds
-	| statement=stat (';' listcmds=cmds	)?											#StatCmds	
+	| statement=stat (';'listcmds=cmds)?											#StatCmds	
 	;
 	  
 //declaration
 dec  returns [com.aps0.interfaces.IASTdeclaration node]
-	:  'VAR' ident=IDENT typ=type   												#VariableDec
-	| 'CONST' ident=IDENT arg=expr typ=type 							  		 	#ConstantDec
+	:'VAR' ident=IDENT typ=type   												#VariableDec
+	|'CONST' ident=IDENT arg=expr typ=type 							  		 	#ConstantDec
 	;
 	
 //statement
 stat returns [com.aps0.interfaces.IASTstatement node]
 	:'SET' ident=IDENT arg=expr 													#VariableAssign
-	| 'IF' condition=expr consequence=prog alternant=prog    						#Alternative
-	| 'WHILE' condition=expr body=prog												#While
+	|'IF' condition=expr consequence=prog alternant=prog    						#Alternative
+	|'WHILE' condition=expr body=prog												#While
 	;
 	   
 //type 
 type returns [com.aps0.interfaces.IASTtype node]
-	: 'int' 																		#TypeInt
-	| 'bool' 																		#TypeBool
+	:'int' 																		#TypeInt
+	|'bool' 																		#TypeBool
  	;
  	   
 //expressions
@@ -75,7 +75,7 @@ expr returns [com.aps0.interfaces.IASTexpression node]
  //Mots reserves
   
   //Identificateurs
- IDENT : [a-z A-Z][a-zA-Z0-9]* ; 
+ IDENT : [a-z A-Z] [a-zA-Z0-9]* ; 
  
  //Constantes numeriques 
  NUM : '-'?[0-9]+ ;

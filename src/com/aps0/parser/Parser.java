@@ -49,14 +49,15 @@ public static void main(String[] args) {
 		
 		try {
 			
-			
-			
+	
 			File file = new File(args[0]);
+			
+			System.out.println(file);
 		
 			
 			IASTprogram prog = parser.parse(file);
 			
-		//	System.out.println(prog.toProlog());
+			System.out.println(((ASTprogram) prog).toProlog());
 
 		
 		} catch (ParseException e) {

@@ -1,10 +1,7 @@
 package com.aps0.parser.aps;
 
-import java.util.List;
 
-import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.ParserRuleContext;
-import org.antlr.v4.runtime.Token;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
 
@@ -17,7 +14,7 @@ import antlr4.APSgrammar0Parser.ConstFalseContext;
 import antlr4.APSgrammar0Parser.ConstNumericContext;
 import antlr4.APSgrammar0Parser.ConstantDecContext;
 import antlr4.APSgrammar0Parser.DecCmdsContext;
-import antlr4.APSgrammar0Parser.ProgrammeContext;
+import antlr4.APSgrammar0Parser.ProgrammContext;
 import antlr4.APSgrammar0Parser.StatCmdsContext;
 import antlr4.APSgrammar0Parser.TypeBoolContext;
 import antlr4.APSgrammar0Parser.TypeIntContext;
@@ -27,8 +24,6 @@ import antlr4.APSgrammar0Parser.VariableDecContext;
 import antlr4.APSgrammar0Parser.WhileContext;
 
 import com.aps0.interfaces.IASTfactory;
-import com.aps0.interfaces.IASTexpression;
-import com.aps0.interfaces.IASTvariable;
 
 import static antlr4.APSgrammar0Parser.*;
 
@@ -56,7 +51,7 @@ public class APSListener implements APSgrammar0Listener {
 	protected IASTfactory factory;
 	
 	@Override
-	public void exitProgramme(ProgrammeContext ctx) {
+	public void exitProgramm(ProgrammContext ctx) {
 		ctx.node=factory.newProgram(ctx.listcmds.node);
 	}
 	
@@ -164,7 +159,7 @@ public class APSListener implements APSgrammar0Listener {
 	public void enterTypeBool(TypeBoolContext ctx) {}
 	public void enterTypeInt(TypeIntContext ctx) {}
 	public void enterCommandes(CommandesContext ctx) {}
-	public void enterProgramme(ProgrammeContext ctx) {}
+	public void enterProgramm(ProgrammContext ctx) {}
 	public void enterDecCmds(DecCmdsContext ctx) {}
 	public void enterStatCmds(StatCmdsContext ctx) {}
 

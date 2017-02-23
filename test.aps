@@ -1,1 +1,2 @@
-[ SET a EXPR ]
+[VAR a bool; SET a true]
+
