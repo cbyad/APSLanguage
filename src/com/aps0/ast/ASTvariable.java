@@ -8,6 +8,7 @@ public class ASTvariable extends ASTnamed implements IASTvariable {
 
 	protected IASTtype type ;
 	
+	
 	public IASTtype getType(){return this.type ;}
 	
     public ASTvariable (String name) {
@@ -16,8 +17,8 @@ public class ASTvariable extends ASTnamed implements IASTvariable {
 
 	@Override
 	public String toProlog() {
-		// TODO Auto-generated method stub
-		return "ASTvar";
+		
+		return getName();
 	}
 
  

@@ -54,9 +54,7 @@ public class APSListener implements APSgrammar0Listener {
 	
 	@Override
 	public void exitProgramm(ProgrammContext ctx) {
-		
-		
-		
+
 		ctx.node=factory.newProgram(ctx.listcmds.get(0).node);//
 	}
 	
@@ -83,7 +81,7 @@ public class APSListener implements APSgrammar0Listener {
 	
 	@Override
 	public void exitConstantDec(ConstantDecContext ctx) {
-		ctx.node=factory.newConstantDeclaration(ctx.getText(), 
+		ctx.node=factory.newConstantDeclaration(ctx.ident.getText(), 
 												ctx.arg.node,
 												ctx.typ.node);
 		
@@ -124,7 +122,7 @@ public class APSListener implements APSgrammar0Listener {
 	}
 	@Override
 	public void exitVariableDec(VariableDecContext ctx) {
-		ctx.node =factory.newVariableDec(ctx.getText(), ctx.typ.node);
+		ctx.node =factory.newVariableDec(ctx.ident.getText(), ctx.typ.node);
 		
 	}
 	@Override
@@ -149,6 +147,24 @@ public class APSListener implements APSgrammar0Listener {
 		ctx.node =factory.newType(ctx.getText());
 	}
 	
+/* Utilitaires de conversion ANTLR vers AST */
+	
+	protected IASTcommands[] toCommands(
+			List<CmdsContext> ctxs) {
+		if (ctxs == null) return new IASTcommands[0];
+		IASTcommands[] r = new IASTcommands[ctxs.size()];
+		int pos = 0;
+		for (CmdsContext e : ctxs) {
+			r[pos++] = e.node;
+		}
+		return r;
+	}
+	
+	
+	
+	
+	
+	// Nothing to do here
 	public void enterEveryRule(ParserRuleContext arg0) {}
 	public void exitEveryRule(ParserRuleContext arg0) {}
 	public void visitErrorNode(ErrorNode arg0) {}
@@ -165,26 +181,10 @@ public class APSListener implements APSgrammar0Listener {
 	public void enterBinary(BinaryContext ctx){}
 	public void enterTypeBool(TypeBoolContext ctx) {}
 	public void enterTypeInt(TypeIntContext ctx) {}
-	//public void enterCommandes(CommandesContext ctx) {}
 	public void enterProgramm(ProgrammContext ctx) {}
 	public void enterDecCmds(DecCmdsContext ctx) {}
 	public void enterStatCmds(StatCmdsContext ctx) {}
 
-	
-/* Utilitaires de conversion ANTLR vers AST */
-	
-	protected IASTcommands[] toCommands(
-			List<CmdsContext> ctxs) {
-		if (ctxs == null) return new IASTcommands[0];
-		IASTcommands[] r = new IASTcommands[ctxs.size()];
-		int pos = 0;
-		for (CmdsContext e : ctxs) {
-			r[pos++] = e.node;
-		}
-		return r;
-	}
-	
-	
 	
 
 	

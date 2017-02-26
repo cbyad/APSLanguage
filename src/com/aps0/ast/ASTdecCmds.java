@@ -32,7 +32,7 @@ public class ASTdecCmds extends ASTcommands implements IASTdecCmds {
 		for(int i=0 ; i<this.listcmds.length; i++){
 			r.append(listcmds[i].toProlog());
 		}
-		return declaration.toProlog()+" , "+r.toString();
+		return declaration.toProlog()+","+r.toString();
 		
 	}
 

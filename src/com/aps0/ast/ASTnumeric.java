@@ -1,7 +1,6 @@
 
 package com.aps0.ast;
 
-import java.math.BigInteger;
 
 import com.aps0.interfaces.IASTnumeric;
 
@@ -9,7 +8,7 @@ public class ASTnumeric extends ASTconstant implements IASTnumeric {
 	
     
     public ASTnumeric (String description) {
-        super(description, new BigInteger(description));
+        super(description, new Integer(description));
     }
     
     @Override

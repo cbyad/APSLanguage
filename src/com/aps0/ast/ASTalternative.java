@@ -48,7 +48,6 @@ implements IASTalternative {
 		else {
 			return "if("+condition.toProlog()+",["+alternant.toProlog()+"])";
 		}
-		
 	}
 
   

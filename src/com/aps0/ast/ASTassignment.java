@@ -26,8 +26,7 @@ implements IASTassignment{
 
 	@Override
 	public String toProlog() {
-		return "set(\""+variable.toProlog()+","+expression.toProlog()+")";
+		return "set(\""+variable.toProlog()+"\","+expression.toProlog()+")";
 	}
-    //TODO
     
 }

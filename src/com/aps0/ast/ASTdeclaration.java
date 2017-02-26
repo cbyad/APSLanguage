@@ -9,8 +9,7 @@ public class ASTdeclaration extends AST implements IASTdeclaration
 
 	@Override
 	public String toProlog() {
-		// TODO Auto-generated method stub
-		return "";
+		return "ASTdeclaration";
 	}
 
 

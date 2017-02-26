@@ -1,2 +1,5 @@
-[VAR a bool ;SET a false]
+[
+	VAR toto int ;
+ 	SET toto (mul (add 2 4) 4) 
+]
 

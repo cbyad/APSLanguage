@@ -32,31 +32,33 @@ public class APSParser {
 			ANTLRInputStream in = new ANTLRInputStream(input.getText());
 			
 			System.out.println(input.getText());
-			//ANTLRInputStream in = new ANTLRInputStream("[VAR dd int ;;SET a 4]");		
 					
-			System.out.println(1);
+			System.out.println("flux de caractères -> analyseur lexical");
 			// flux de caractères -> analyseur lexical
 			APSgrammar0Lexer lexer = new APSgrammar0Lexer(in);
-			System.out.println(2);
+			
+			System.out.println(" analyseur lexical -> flux de tokens");
 			// analyseur lexical -> flux de tokens
 			CommonTokenStream tokens =	new CommonTokenStream(lexer);
-			System.out.println(3);
+			
+			System.out.println("flux tokens -> analyseur syntaxique");
 			// flux tokens -> analyseur syntaxique
 			APSgrammar0Parser parser =	new APSgrammar0Parser(tokens);
-			System.out.println(4);
+			
+			System.out.println("démarage de l'analyse syntaxique");
 			// démarage de l'analyse syntaxique
-			APSgrammar0Parser.ProgContext tree = parser.prog();		
-			System.out.println(5);
+			APSgrammar0Parser.ProgContext tree = parser.prog();	
+			
+			System.out.println("parcours de l'AST et appels du Listener");
 			// parcours de l'arbre syntaxique et appels du Listener
 			ParseTreeWalker walker = new ParseTreeWalker();
-			System.out.println(5);
 			APSListener extractor = new APSListener(factory);
-			System.out.println(6);
-			
 			walker.walk( extractor, tree);	
-			System.out.println(7);
+			
+			System.out.println("Parseur reussi");
 			return tree.node;
 		} catch (Exception e) {
+			
 			throw new ParseException(e);
 		}
     }

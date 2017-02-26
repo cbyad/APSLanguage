@@ -11,7 +11,7 @@ import com.aps0.interfaces.IASTtype;
  * 
  */
 
-public class ASTconstant extends ASTexpression 
+public  class ASTconstant extends ASTexpression 
 implements IASTconstant {
 
 	private final String description;
@@ -25,9 +25,7 @@ implements IASTconstant {
         this.value = value;
     }
     
-    
 
-    
 
     @Override
 	public String getDescription() {
@@ -48,7 +46,6 @@ implements IASTconstant {
 
 	@Override
 	public String toProlog() {
-		// TODO Auto-generated method stub
 		return "ASTconstant";
 	}
 

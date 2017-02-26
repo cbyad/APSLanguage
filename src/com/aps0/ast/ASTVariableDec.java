@@ -27,10 +27,7 @@ IASTvariableDec {
 
 	@Override
 	public String toProlog() {
-		// TODO Auto-generated method stub
-		return "ASTvardec";
+		return "var(\""+description+"\","+type.toProlog()+")";
 	}
-	
-	
 	
 }

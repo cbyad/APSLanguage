@@ -20,8 +20,7 @@ public class ASTtype extends AST implements IASTtype
 
 	@Override
 	public String toProlog() {
-		// TODO Auto-generated method stub
-		return "ASTtype";
+		return name;
 	}
 	
 	

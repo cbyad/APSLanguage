@@ -13,9 +13,6 @@ public class ASTboolean extends ASTconstant implements IASTboolean {
 	public Boolean getValue() {
         return (Boolean) super.getValue();
     }
-
-
-
 	
 	@Override
 	public String getName() {
@@ -27,7 +24,5 @@ public class ASTboolean extends ASTconstant implements IASTboolean {
 		return getValue().toString();
 	}
 	
-	
-
     
 }

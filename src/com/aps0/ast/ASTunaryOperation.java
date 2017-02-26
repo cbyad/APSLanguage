@@ -32,7 +32,6 @@ public class ASTunaryOperation extends ASTexpression implements IASTunaryOperati
   
 	@Override
 	public String toProlog() {
-	// TODO	return operator.+"";
-		return "UNOP";
+	return operator.toProlog()+"("+operand.toProlog()+")";
 	}
 }

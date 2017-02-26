@@ -16,14 +16,14 @@ grammar APSgrammar0;
 
 //Structure general d'un programme APS0
 prog returns [com.aps0.interfaces.IASTprogram node]
-	: '['listcmds+=cmds']' * EOF													#Programm
+	: '['listcmds+=cmds']'													#Programm
 	;
 
 
 
 //commandes
 cmds returns [com.aps0.interfaces.IASTcommands node]
-	:statement=stat (';' commandes+=cmds)?											#StatCmds
+	:statement=stat (';' commandes+=cmds)*											#StatCmds
 	|declaration=dec ';' commandes+=cmds											#DecCmds
 	;																				//#Commandes
 	
@@ -38,7 +38,7 @@ cmds returns [com.aps0.interfaces.IASTcommands node]
 //declaration
 dec  returns [com.aps0.interfaces.IASTdeclaration node]
 	:'VAR' ident=IDENT typ=type   												#VariableDec
-	|'CONST' ident=IDENT arg=expr typ=type 							  		 	#ConstantDec
+	|'CONST' ident=IDENT typ=type arg=expr 					  		 			#ConstantDec
 	;
 	
 //statement
@@ -72,16 +72,7 @@ expr returns [com.aps0.interfaces.IASTexpression node]
  * 
  */
  
- //Symboles reserve
- /*SYMBOLES : ['[' | ']' | '(' | ')' | ';' | '_'] ;*/
- 
- // Constantes chaînes de caractères
-STRING : '"' (ESC | ~["\\])*  '"';
-ESC : '\\' [\\nrt"];
 
-// Commentaires
-LINE_COMMENT : '//' (~[\r\n])* -> skip;
-COMMENT : '/*' ('*' ~[/] | ~[*])* '*/' -> skip; 
   //Identificateurs
  IDENT : [a-zA-Z_] [a-zA-Z0-9_]* ; 
  
@@ -89,3 +80,9 @@ COMMENT : '/*' ('*' ~[/] | ~[*])* '*/' -> skip;
  NUM : '-'?[0-9]+ ;
  //Caracteres separateurs 
  SPACE : [ \t\r\n]+ ->skip ;
+  
+ESC : '\\' [\\nrt"];
+
+// Commentaires
+LINE_COMMENT : '//' (~[\r\n])* -> skip;
+COMMENT : '/*' ('*' ~[/] | ~[*])* '*/' -> skip; 
