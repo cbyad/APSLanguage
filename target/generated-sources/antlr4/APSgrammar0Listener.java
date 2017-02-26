@@ -35,18 +35,6 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 */
 	void exitAlternative(@NotNull APSgrammar0Parser.AlternativeContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code Commandes}
-	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
-	 * @param ctx the parse tree
-	 */
-	void enterCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code Commandes}
-	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
-	 * @param ctx the parse tree
-	 */
-	void exitCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code Programm}
 	 * labeled alternative in {@link APSgrammar0Parser#prog}.
 	 * @param ctx the parse tree
@@ -144,25 +132,25 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	void exitUnary(@NotNull APSgrammar0Parser.UnaryContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code DecCmds}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
 	 * @param ctx the parse tree
 	 */
 	void enterDecCmds(@NotNull APSgrammar0Parser.DecCmdsContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code DecCmds}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
 	 * @param ctx the parse tree
 	 */
 	void exitDecCmds(@NotNull APSgrammar0Parser.DecCmdsContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code StatCmds}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
 	 * @param ctx the parse tree
 	 */
 	void enterStatCmds(@NotNull APSgrammar0Parser.StatCmdsContext ctx);
 	/**
 	 * Exit a parse tree produced by the {@code StatCmds}
-	 * labeled alternative in {@link APSgrammar0Parser#cmd}.
+	 * labeled alternative in {@link APSgrammar0Parser#cmds}.
 	 * @param ctx the parse tree
 	 */
 	void exitStatCmds(@NotNull APSgrammar0Parser.StatCmdsContext ctx);

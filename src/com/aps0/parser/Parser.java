@@ -54,7 +54,6 @@ public static void main(String[] args) {
 			
 			System.out.println(file);
 		
-			
 			IASTprogram prog = parser.parse(file);
 			
 			System.out.println(((ASTprogram) prog).toProlog());
@@ -63,6 +62,8 @@ public static void main(String[] args) {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+	
+		
 		
 	}
 }

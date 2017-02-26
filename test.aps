@@ -1,2 +1,2 @@
-[VAR a bool; SET a true]
+[VAR a bool ;SET a false]
 

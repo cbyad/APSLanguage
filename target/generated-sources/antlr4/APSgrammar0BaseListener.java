@@ -43,18 +43,6 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitCommandes(@NotNull APSgrammar0Parser.CommandesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterProgramm(@NotNull APSgrammar0Parser.ProgrammContext ctx) { }
 	/**
 	 * {@inheritDoc}

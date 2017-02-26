@@ -46,16 +46,11 @@ implements IASTconstant {
 	}
 
 
-
-
-
 	@Override
 	public String toProlog() {
 		// TODO Auto-generated method stub
 		return "ASTconstant";
 	}
-
-
 
 
 }

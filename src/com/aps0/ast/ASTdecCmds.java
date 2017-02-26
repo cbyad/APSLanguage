@@ -4,31 +4,42 @@ import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTdecCmds;
 import com.aps0.interfaces.IASTdeclaration;
 
-public class ASTdecCmds extends ASTcommand implements IASTdecCmds {
+public class ASTdecCmds extends ASTcommands implements IASTdecCmds {
 
 	
 	protected IASTdeclaration declaration;
-	protected IASTcommands listcmds;
+	protected IASTcommands[] listcmds;
 	
 	
 	
-	public ASTdecCmds(IASTdeclaration declaration, IASTcommands listcmds) {
+	public ASTdecCmds(IASTdeclaration declaration, IASTcommands[] listcmds) {
 		super();
 		this.declaration = declaration;
 		this.listcmds = listcmds;
 	}
 
+	@Override
 	public IASTdeclaration getDeclaration() {
 		return declaration;
 	}
 
-	public IASTcommands getListcmds() {
-		return listcmds;
-	}
+
 
 	@Override
 	public String toProlog() {
-		return declaration.toProlog()+" , "+listcmds.toProlog();
+		
+		StringBuilder r = new StringBuilder();
+		for(int i=0 ; i<this.listcmds.length; i++){
+			r.append(listcmds[i].toProlog());
+		}
+		return declaration.toProlog()+" , "+r.toString();
+		
+	}
+
+	@Override
+	public IASTcommands[] getCommandes() {
+		
+		return this.listcmds;
 	}
 
 }

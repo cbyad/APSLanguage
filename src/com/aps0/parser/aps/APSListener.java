@@ -1,6 +1,8 @@
 package com.aps0.parser.aps;
 
 
+import java.util.List;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -8,7 +10,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import antlr4.APSgrammar0Listener;
 import antlr4.APSgrammar0Parser.AlternativeContext;
 import antlr4.APSgrammar0Parser.BinaryContext;
-import antlr4.APSgrammar0Parser.CommandesContext;
 import antlr4.APSgrammar0Parser.ConsTrueContext;
 import antlr4.APSgrammar0Parser.ConstFalseContext;
 import antlr4.APSgrammar0Parser.ConstNumericContext;
@@ -23,6 +24,7 @@ import antlr4.APSgrammar0Parser.VariableAssignContext;
 import antlr4.APSgrammar0Parser.VariableDecContext;
 import antlr4.APSgrammar0Parser.WhileContext;
 
+import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTfactory;
 
 import static antlr4.APSgrammar0Parser.*;
@@ -52,26 +54,31 @@ public class APSListener implements APSgrammar0Listener {
 	
 	@Override
 	public void exitProgramm(ProgrammContext ctx) {
-		ctx.node=factory.newProgram(ctx.listcmds.node);
+		
+		
+		
+		ctx.node=factory.newProgram(ctx.listcmds.get(0).node);//
 	}
 	
+	/*
 	@Override
 	public void exitCommandes(CommandesContext ctx) {
-		ctx.node=factory.newCommands(ctx.premcmd.node, ctx.listcmds.node);
+		ctx.node=factory.newCommands(ctx.premcmd.node, 
+				
+				ctx.listcmds.node);
 	}
-
+	*/
 	
 	
 	@Override
 	public void exitDecCmds(DecCmdsContext ctx) {
-		ctx.node=factory.newDecCmds(ctx.declaration.node, ctx.listcmds.node);
+		ctx.node= factory.newDecCmds(ctx.declaration.node , 
+				toCommands(ctx.commandes) );
 	}
 	
 	@Override
 	public void exitStatCmds(StatCmdsContext ctx) {
-		ctx.node=factory.newStatCmds(ctx.statement.node,
-				
-				ctx.listcmds==null? null:ctx.listcmds.node);
+		ctx.node=factory.newStatCmds(ctx.statement.node,toCommands(ctx.commandes));
 	}
 	
 	@Override
@@ -158,12 +165,27 @@ public class APSListener implements APSgrammar0Listener {
 	public void enterBinary(BinaryContext ctx){}
 	public void enterTypeBool(TypeBoolContext ctx) {}
 	public void enterTypeInt(TypeIntContext ctx) {}
-	public void enterCommandes(CommandesContext ctx) {}
+	//public void enterCommandes(CommandesContext ctx) {}
 	public void enterProgramm(ProgrammContext ctx) {}
 	public void enterDecCmds(DecCmdsContext ctx) {}
 	public void enterStatCmds(StatCmdsContext ctx) {}
 
-
+	
+/* Utilitaires de conversion ANTLR vers AST */
+	
+	protected IASTcommands[] toCommands(
+			List<CmdsContext> ctxs) {
+		if (ctxs == null) return new IASTcommands[0];
+		IASTcommands[] r = new IASTcommands[ctxs.size()];
+		int pos = 0;
+		for (CmdsContext e : ctxs) {
+			r[pos++] = e.node;
+		}
+		return r;
+	}
+	
+	
+	
 
 	
 	/*

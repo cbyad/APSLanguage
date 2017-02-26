@@ -41,8 +41,14 @@ implements IASTalternative {
 
 	@Override
 	public String toProlog() {
-		return "if("+condition.toProlog()+","+">>CONSEQUENCE<<"+","+">>ALTERNANT<<";
-		//return "if("+condition.toProlog()+","+consequence.toProlog()+","+alternant.toProlog();
+		
+		if(alternant!=null){
+			return "if("+condition.toProlog()+",["+alternant.toProlog()+"],["+alternant.toProlog()+"])";
+		}
+		else {
+			return "if("+condition.toProlog()+",["+alternant.toProlog()+"])";
+		}
+		
 	}
 
   

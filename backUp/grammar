@@ -4,10 +4,10 @@ grammar APSgrammar0;
 	package antlr4;
 }
 
-/* 
+/*
  * Règles syntaxiques.
- * 
- * ANTLR impose que le nom des règles syntaxique comment par 
+ *
+ * ANTLR impose que le nom des règles syntaxique comment par
  * une minuscule.
  * Ces règles ont la forme "BNF".
  * Chaque règle retourne un objet Java représentant un morceau d'AST.
@@ -16,44 +16,41 @@ grammar APSgrammar0;
 
 //Structure general d'un programme APS0
 prog returns [com.aps0.interfaces.IASTprogram node]
-	: '['listcmds+=cmds']' * EOF													#Programm
+	: '[' listcmds=cmds ']' 													#Programm
 	;
 
 
 
 //commandes
 cmds returns [com.aps0.interfaces.IASTcommands node]
-	:statement=stat (';' commandes+=cmds)?											#StatCmds
-	|declaration=dec ';' commandes+=cmds											#DecCmds
-	;																				//#Commandes
-	
- 
-
-/*cmd returns [com.aps0.interfaces.IASTcommand node]
-	: declaration=dec ';' listcmds=cmds												#DecCmds
-	| statement=stat (';'listcmds=cmds)?											#StatCmds	
+	: premcmd=cmd (';' listcmds=cmds)?												#Commandes
 	;
-*/
-	  
+
+
+cmd returns [com.aps0.interfaces.IASTcommand node]
+	: declaration=dec ';' listcmds=cmds												#DecCmds
+	| statement=stat (';'listcmds=cmds)?											#StatCmds
+	;
+
 //declaration
 dec  returns [com.aps0.interfaces.IASTdeclaration node]
-	:'VAR' ident=IDENT typ=type   												#VariableDec
+	: 'VAR' ident=IDENT typ=type   												#VariableDec
 	|'CONST' ident=IDENT arg=expr typ=type 							  		 	#ConstantDec
 	;
-	
+
 //statement
 stat returns [com.aps0.interfaces.IASTstatement node]
-	:'SET' ident=IDENT arg=expr 													#VariableAssign
+	: 'SET' ident=IDENT arg=expr 													#VariableAssign
 	|'IF' condition=expr consequence=prog alternant=prog    						#Alternative
 	|'WHILE' condition=expr body=prog												#While
 	;
-	   
-//type 
+
+//type
 type returns [com.aps0.interfaces.IASTtype node]
 	:'int' 																		#TypeInt
 	|'bool' 																		#TypeBool
  	;
- 	   
+
 //expressions
 expr returns [com.aps0.interfaces.IASTexpression node]
 	:'true'																			#ConsTrue
@@ -65,27 +62,18 @@ expr returns [com.aps0.interfaces.IASTexpression node]
 	;
 
 /*
- * Regles lexicales 
+ * Regles lexicales
  * ANTLR impose que le nom des règles lexicales commencent par
- * une majuscule. 
+ * une majuscule.
  * Ces règles prennent la forme d'expressions régulières.
- * 
+ *
  */
- 
- //Symboles reserve
- /*SYMBOLES : ['[' | ']' | '(' | ')' | ';' | '_'] ;*/
- 
- // Constantes chaînes de caractères
-STRING : '"' (ESC | ~["\\])*  '"';
-ESC : '\\' [\\nrt"];
 
-// Commentaires
-LINE_COMMENT : '//' (~[\r\n])* -> skip;
-COMMENT : '/*' ('*' ~[/] | ~[*])* '*/' -> skip; 
+
   //Identificateurs
- IDENT : [a-zA-Z_] [a-zA-Z0-9_]* ; 
- 
- //Constantes numeriques 
+ IDENT : [a-zA-Z_] [a-zA-Z0-9_]* ;
+
+ //Constantes numeriques
  NUM : '-'?[0-9]+ ;
- //Caracteres separateurs 
+ //Caracteres separateurs
  SPACE : [ \t\r\n]+ ->skip ;
