@@ -5,7 +5,7 @@ import com.aps0.annotation.OrNull;
 
 public interface IASTalternative extends IASTstatement {
 	IASTexpression getCondition();
-	IASTprogram getConsequence();
-	@OrNull IASTprogram getAlternant();
+	IASTcommands[] getConsequence();
+	@OrNull IASTcommands[] getAlternant();
 	boolean isTernary();
 }

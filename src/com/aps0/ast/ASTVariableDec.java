@@ -8,7 +8,7 @@ IASTvariableDec {
 
 	protected String description;
 	protected IASTtype type;
-	
+
 	public ASTVariableDec(String description, IASTtype type) {
 		super();
 		this.description = description;
@@ -29,5 +29,5 @@ IASTvariableDec {
 	public String toProlog() {
 		return "var(\""+description+"\","+type.toProlog()+")";
 	}
-	
+
 }

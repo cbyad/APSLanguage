@@ -12,6 +12,4 @@ public class ASToperator extends ASTnamed implements IASToperator {
 	public String toProlog() {
 		return getName();
 	}
-
-  
 }

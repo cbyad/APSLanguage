@@ -2,22 +2,22 @@ package com.aps0.ast;
 
 import com.aps0.annotation.OrNull;
 import com.aps0.interfaces.IASTalternative;
+import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTexpression;
-import com.aps0.interfaces.IASTprogram;
 
 public class ASTalternative extends ASTstatement
 implements IASTalternative {
-    
+
 	public ASTalternative(IASTexpression condition,
-			IASTprogram consequence,
-			IASTprogram alternant ) {
+			IASTcommands[] consequence,
+			IASTcommands[] alternant ) {
 		this.condition = condition;
 		this.consequence = consequence;
 		this.alternant = alternant;
 	}
 	private final IASTexpression condition;
-	private final IASTprogram consequence;
-	private @OrNull final IASTprogram alternant;
+	private final IASTcommands[] consequence;
+	private @OrNull final IASTcommands[] alternant;
 
 	@Override
 	public IASTexpression getCondition() {
@@ -25,30 +25,51 @@ implements IASTalternative {
 	}
 
 	@Override
-	public IASTprogram getConsequence() {
+	public IASTcommands[] getConsequence() {
 		return consequence;
 	}
 
 	@Override
-	public IASTprogram getAlternant() {
+	public IASTcommands[] getAlternant() {
 		return alternant;
 	}
 
 	@Override
 	public boolean isTernary () {
-	    return this.alternant != null;
+		return this.alternant != null;
 	}
 
 	@Override
 	public String toProlog() {
-		
-		if(alternant!=null){
-			return "if("+condition.toProlog()+",["+alternant.toProlog()+"],["+alternant.toProlog()+"])";
+
+		StringBuilder str= new StringBuilder();
+
+		if(isTernary()){
+			str.append("if("+condition.toProlog()+",[");
+
+			for(int i=0 ;i<this.consequence.length;i++){
+				str.append(consequence[i].toProlog());
+			}
+			str.append("],[");
+
+			for(int i=0 ;i<this.alternant.length;i++){
+				str.append(alternant[i].toProlog());
+			}
+			str.append("])");
+
+			return str.toString() ;
 		}
+
 		else {
-			return "if("+condition.toProlog()+",["+alternant.toProlog()+"])";
+
+			str.append("if("+condition.toProlog()+",[");
+
+			for(int i=0 ;i<this.consequence.length;i++){
+				str.append(consequence[i].toProlog());
+			}
+			str.append("])");
+
+			return str.toString() ;
 		}
 	}
-
-  
 }

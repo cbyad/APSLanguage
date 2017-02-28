@@ -2,7 +2,6 @@ package com.aps0.ast;
 
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTexpression;
-import com.aps0.interfaces.IASTprogram;
 import com.aps0.interfaces.IASTwhile;
 
 
@@ -39,12 +38,7 @@ public class ASTwhile extends ASTstatement implements IASTwhile
 		for(int i =0 ;i< this.body.length;i++){
 			str.append(this.body[i].toProlog());	
 		}
-		
 		str.append("])");
 		return str.toString();
-		
-		
-		//return +condition.toProlog()+",[" +this.body.toProlog()+ "])"  ;
 	}
-
 }

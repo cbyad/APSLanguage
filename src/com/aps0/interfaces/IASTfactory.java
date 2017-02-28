@@ -1,23 +1,15 @@
 
 package com.aps0.interfaces;
 
-import com.aps0.ast.ASTdecCmds;
-
 public interface IASTfactory {
 	
     IASTprogram newProgram(
             IASTcommands[] command);
-    
-    /*
-    IASTcommands newCommands(
-    		IASTcommand premcmd,
-    		IASTcommands listCmds);
-     */ 
-  
+
     IASTstatement newAlternative(
             IASTexpression condition,
-            IASTprogram consequence,
-            IASTprogram alternant);
+            IASTcommands[] consequence,
+            IASTcommands[] alternant);
 
     IASToperator newOperator(String name);
     
@@ -40,7 +32,6 @@ public interface IASTfactory {
    
     IASTstatement newAssignment(IASTvariable variable , IASTexpression value);
     
-    IASTconstant newConstant(String name, IASTexpression expression);
     
     IASTtype newType(String name);
     
@@ -48,16 +39,9 @@ public interface IASTfactory {
 	IASTconstantDeclaration newConstantDeclaration(String description,
 			IASTexpression expression, IASTtype type);
 	
-	
 	IASTvariableDec newVariableDec(String description, IASTtype type);
-
-	//IASTcommand newDecCmds(IASTdeclaration declaration, IASTcommands listcmds);
-
-	//IASTcommand newStatCmds(IASTstatement statement, IASTcommands listcmds);
 	
 	IASTstatCmds newStatCmds(IASTstatement statement, IASTcommands[] listcmds);
 	
 	IASTdecCmds newDecCmds(IASTdeclaration declaration, IASTcommands[] listcmds);
-	
-	
 }

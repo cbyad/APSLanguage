@@ -1,7 +1,6 @@
 
 package com.aps0.ast;
 
-
 import com.aps0.interfaces.IASTnumeric;
 
 public class ASTnumeric extends ASTconstant implements IASTnumeric {
@@ -27,5 +26,4 @@ public class ASTnumeric extends ASTconstant implements IASTnumeric {
 		return getDescription();
 	}
 
-	
 }

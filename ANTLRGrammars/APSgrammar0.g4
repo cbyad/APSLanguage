@@ -44,7 +44,7 @@ dec  returns [com.aps0.interfaces.IASTdeclaration node]
 //statement
 stat returns [com.aps0.interfaces.IASTstatement node]
 	:'SET' ident=IDENT arg=expr 													#VariableAssign
-	|'IF' condition=expr consequence=prog alternant=prog    						#Alternative
+	|'IF' condition=expr '['consequence+=cmds']' '['alternant+=cmds']'    						#Alternative
 	|'WHILE' condition=expr '['body+=cmds']'	/* equivalent to body=prog*/		#While
 	;
 	   

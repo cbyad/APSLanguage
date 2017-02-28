@@ -7,11 +7,11 @@ import com.aps0.interfaces.IASTtype;
 
 /*
  * ASTconstant is used for bool/num constante
- * not the same with data introduiced by 'const'
+ * not the same with data introduiced by 'const' (see ConstantDec)
  * 
  */
 
-public  class ASTconstant extends ASTexpression 
+public  abstract class ASTconstant extends ASTexpression 
 implements IASTconstant {
 
 	private final String description;
@@ -25,8 +25,6 @@ implements IASTconstant {
         this.value = value;
     }
     
-
-
     @Override
 	public String getDescription() {
         return this.description;
@@ -37,16 +35,9 @@ implements IASTconstant {
         return this.value;
     }
 
-
 	@Override
 	public String getName() {
 		return name;
-	}
-
-
-	@Override
-	public String toProlog() {
-		return "ASTconstant";
 	}
 
 

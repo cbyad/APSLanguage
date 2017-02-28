@@ -6,11 +6,8 @@ import com.aps0.interfaces.IASTdeclaration;
 
 public class ASTdecCmds extends ASTcommands implements IASTdecCmds {
 
-	
 	protected IASTdeclaration declaration;
 	protected IASTcommands[] listcmds;
-	
-	
 	
 	public ASTdecCmds(IASTdeclaration declaration, IASTcommands[] listcmds) {
 		super();
@@ -22,8 +19,6 @@ public class ASTdecCmds extends ASTcommands implements IASTdecCmds {
 	public IASTdeclaration getDeclaration() {
 		return declaration;
 	}
-
-
 
 	@Override
 	public String toProlog() {

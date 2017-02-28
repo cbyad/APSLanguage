@@ -1,8 +1,6 @@
 package com.aps0.parser.aps;
 
-
 import java.util.List;
-
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -23,10 +21,7 @@ import antlr4.APSgrammar0Parser.VariableAssignContext;
 import antlr4.APSgrammar0Parser.VariableDecContext;
 import antlr4.APSgrammar0Parser.WhileContext;
 
-import com.aps0.ast.ASTdecCmds;
 import com.aps0.interfaces.IASTcommands;
-import com.aps0.interfaces.IASTdecCmds;
-import com.aps0.interfaces.IASTdeclaration;
 import com.aps0.interfaces.IASTfactory;
 
 import static antlr4.APSgrammar0Parser.*;
@@ -42,132 +37,108 @@ import static antlr4.APSgrammar0Parser.*;
  * 
  */
 public class APSListener implements APSgrammar0Listener {
-	
+
 	public APSListener(IASTfactory factory) {
 		super();
 		this.factory = factory;		
 	}
-	
+
 	/*
 	 * Le parseur est paramétré par une fabrique qui indique comment
 	 * créer les instances concrètes d'AST.
 	 */
 	protected IASTfactory factory;
-	
+
 	@Override
 	public void exitProgramm(ProgrammContext ctx) {
-		/*
-		IASTdecCmds d = new ASTdecCmds(new IASTdeclaration() {
-			
-			@Override
-			public String toProlog() {
-				return null;
-			}
-		}, toCommands(ctx.listcmds));
-		IASTcommands cmds= d;
-		
-		ctx.node=factory.newProgram(cmds);
-		*/
-		
-		ctx.node= factory.newProgram(toCommands(ctx.listcmds));
-	
-		
-		
+
+		ctx.node= factory.newProgram(toCommands(ctx.listcmds));	
 	}
-	
-	/*
-	@Override
-	public void exitCommandes(CommandesContext ctx) {
-		ctx.node=factory.newCommands(ctx.premcmd.node, 
-				
-				ctx.listcmds.node);
-	}
-	*/
-	
-	
+
 	@Override
 	public void exitDecCmds(DecCmdsContext ctx) {
 		ctx.node= factory.newDecCmds(ctx.declaration.node , 
 				toCommands(ctx.commandes) );
 	}
-	
+
 	@Override
 	public void exitStatCmds(StatCmdsContext ctx) {
-		ctx.node=factory.newStatCmds(ctx.statement.node,toCommands(ctx.commandes));
+		ctx.node=factory.newStatCmds(ctx.statement.node,
+				toCommands(ctx.commandes));
 	}
-	
+
 	@Override
 	public void exitConstantDec(ConstantDecContext ctx) {
 		ctx.node=factory.newConstantDeclaration(ctx.ident.getText(), 
-												ctx.arg.node,
-												ctx.typ.node);
-		
+				ctx.arg.node,
+				ctx.typ.node);
+
 	}
+
 	@Override
 	public void exitAlternative(AlternativeContext ctx) {
 		ctx.node=factory.newAlternative(ctx.condition.node,
-										ctx.consequence.node,
-										ctx.alternant==null?null:ctx.alternant.node);
-		
+				toCommands(ctx.consequence),
+				ctx.alternant==null?null:toCommands(ctx.alternant));
 	}
-	
+
 
 	@Override
 	public void exitVariableAssign(VariableAssignContext ctx) {
-		ctx.node=factory.newAssignment(factory.newVariable(ctx.ident.getText()), ctx.arg.node);
-		
+		ctx.node=factory.newAssignment(
+				factory.newVariable(ctx.ident.getText()), ctx.arg.node);
+
 	}
 	@Override
 	public void exitWhile(WhileContext ctx) {
-		ctx.node=factory.newWhile(ctx.condition.node, toCommands(ctx.body)  );
-		
+		ctx.node=factory.newWhile(ctx.condition.node, toCommands(ctx.body));
+
 	}
 	@Override
 	public void exitConsTrue(ConsTrueContext ctx) {
-		ctx.node=factory.newBooleanConstant("true"); //true
-		
+		ctx.node=factory.newBooleanConstant("true");
+
 	}
 	@Override
 	public void exitConstFalse(ConstFalseContext ctx) {
-		ctx.node=factory.newBooleanConstant("false"); //false
-		
+		ctx.node=factory.newBooleanConstant("false");
+
 	}
-	
+
 	@Override
 	public void exitUnary(UnaryContext ctx) {
-		ctx.node=factory.newUnaryOperation( factory.newOperator(ctx.op.getText()), ctx.arg.node);
+		ctx.node=factory.newUnaryOperation( 
+				factory.newOperator(ctx.op.getText()), ctx.arg.node);
 	}
 	@Override
 	public void exitVariableDec(VariableDecContext ctx) {
 		ctx.node =factory.newVariableDec(ctx.ident.getText(), ctx.typ.node);
-		
+
 	}
 	@Override
 	public void exitConstNumeric(ConstNumericContext ctx) {
 		ctx.node =factory.newNumericConstant(ctx.constNum.getText());
-		
+
 	}
 	@Override
 	public void exitBinary(BinaryContext ctx) {
 		ctx.node=factory.newBinaryOperation(factory.newOperator(ctx.op.getText()),
 				ctx.arg1.node, ctx.arg2.node);
-		
 	}
 
-	
 	@Override
 	public void exitTypeBool(TypeBoolContext ctx) {
 		ctx.node =factory.newType(ctx.getText());
-		
+
 	}
-	
+
 	@Override
 	public void exitTypeInt(TypeIntContext ctx) {
 		ctx.node =factory.newType(ctx.getText());
 	}
-	
-/* Utilitaires de conversion ANTLR vers AST */
-	
+
+	/* ANTLR4 list to AST Array*/
+
 	protected IASTcommands[] toCommands(
 			List<CmdsContext> ctxs) {
 		if (ctxs == null) return new IASTcommands[0];
@@ -178,11 +149,8 @@ public class APSListener implements APSgrammar0Listener {
 		}
 		return r;
 	}
-	
-	
-	
-	
-	
+
+
 	// Nothing to do here
 	public void enterEveryRule(ParserRuleContext arg0) {}
 	public void exitEveryRule(ParserRuleContext arg0) {}
@@ -204,9 +172,7 @@ public class APSListener implements APSgrammar0Listener {
 	public void enterDecCmds(DecCmdsContext ctx) {}
 	public void enterStatCmds(StatCmdsContext ctx) {}
 
-	
 
-	
 	/*
 	 * ANTLRGrammarBaseListener, automatiquement généré, fournit
 	 * un squelette d'objet "Listener".

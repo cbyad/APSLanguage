@@ -4,7 +4,7 @@ import com.aps0.interfaces.IASTstatCmds;
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTstatement;
 
-public class ASTStatCmds extends ASTcommands implements IASTstatCmds {
+public class ASTstatCmds extends ASTcommands implements IASTstatCmds {
 
 	protected IASTstatement statement;
 	protected IASTcommands[] listcmds;
@@ -14,39 +14,28 @@ public class ASTStatCmds extends ASTcommands implements IASTstatCmds {
 		return statement;
 	}
 
-
-
-	public ASTStatCmds(IASTstatement statement, IASTcommands[] listCmds) {
+	public ASTstatCmds(IASTstatement statement, IASTcommands[] listCmds) {
 		super();
 		this.statement = statement;
 		this.listcmds = listCmds;
 	}
 
-
 	@Override
 	public String toProlog() {
-		StringBuilder r = new StringBuilder();
+		StringBuilder str = new StringBuilder();
 
 		if (listcmds.length!=0){
 			for(int i=0 ; i<this.listcmds.length; i++){
-				r.append(listcmds[i].toProlog());
+				str.append(listcmds[i].toProlog());
 			}
-
-			return statement.toProlog()+"," + r.toString();
+			return statement.toProlog()+"," + str.toString();
 		}
 		else
 			return statement.toProlog();
-
-
 	}
-
 
 	@Override
 	public IASTcommands[] getCommandes() {
-
 		return  listcmds;
 	}
-
-
-
 }

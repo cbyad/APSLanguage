@@ -41,7 +41,5 @@ public class ASTbinaryOperation extends ASTexpression implements IASTbinaryOpera
 	@Override
 	public String toProlog() {
 		return operator.toProlog()+"("+leftOperand.toProlog()+" , "+rightOperand.toProlog()+")";
-	}
-    
-  
+	} 
 }

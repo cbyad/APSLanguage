@@ -2,7 +2,6 @@ package com.aps0.ast;
 
 import com.aps0.interfaces.IASTbinaryOperation;
 import com.aps0.interfaces.IASTcommands;
-import com.aps0.interfaces.IASTconstant;
 import com.aps0.interfaces.IASTconstantDeclaration;
 import com.aps0.interfaces.IASTdecCmds;
 import com.aps0.interfaces.IASTdeclaration;
@@ -33,8 +32,8 @@ public class ASTfactory implements IASTfactory {
 
     @Override
 	public IASTstatement newAlternative(IASTexpression condition,
-                                          IASTprogram consequence, 
-                                          IASTprogram alternant) {
+                                          IASTcommands[] consequence, 
+                                          IASTcommands[] alternant) {
         return new ASTalternative(condition, consequence, alternant);
     }
 
@@ -78,12 +77,6 @@ public class ASTfactory implements IASTfactory {
 	}
 
 	@Override
-	public IASTconstant newConstant(String name, IASTexpression expression
-			) {
-		return new ASTconstant(name, expression);
-	}
-
-	@Override
 	public IASTtype newType(String name) {
 		return new ASTtype(name);
 	}
@@ -99,15 +92,6 @@ public class ASTfactory implements IASTfactory {
 		return new ASTVariableDec(description, type);
 	}
 
-	/*
-	@Override
-	public IASTcommands newCommands(IASTcommand premcmd, IASTcommands listcmds) {
-		return new ASTcommands(premcmd, listcmds);
-	}
-	*/
-
-
-
 	@Override
 	public IASTdecCmds newDecCmds(IASTdeclaration declaration, IASTcommands[] listcmds) {
 		return new ASTdecCmds(declaration, listcmds);
@@ -115,11 +99,6 @@ public class ASTfactory implements IASTfactory {
 
 	@Override
 	public  IASTstatCmds newStatCmds(IASTstatement statement, IASTcommands[] listcmds) {
-		return new ASTStatCmds(statement, listcmds);
+		return new ASTstatCmds(statement, listcmds);
 	}
-
-   
-
-    
-    
 }

@@ -1,7 +1,5 @@
 package com.aps0.interfaces;
 
-public abstract interface IASTprogram {
+public abstract interface IASTprogram extends IAST{
 	IASTcommands[] getListCmds() ;
-
-	public String toProlog();
 }
