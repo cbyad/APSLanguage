@@ -38,7 +38,7 @@ implements IASTconstantDeclaration{
 
 	@Override
 	public String toProlog() {
-		return "const(\""+description+","+type.toProlog()+","+expression.toProlog()+")";
+		return "const(\""+description+"\","+type.toProlog()+","+expression.toProlog()+")";
 	}
 
 	

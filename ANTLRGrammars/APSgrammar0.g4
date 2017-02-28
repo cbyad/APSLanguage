@@ -45,7 +45,7 @@ dec  returns [com.aps0.interfaces.IASTdeclaration node]
 stat returns [com.aps0.interfaces.IASTstatement node]
 	:'SET' ident=IDENT arg=expr 													#VariableAssign
 	|'IF' condition=expr consequence=prog alternant=prog    						#Alternative
-	|'WHILE' condition=expr body=prog												#While
+	|'WHILE' condition=expr '['body+=cmds']'	/* equivalent to body=prog*/		#While
 	;
 	   
 //type 
@@ -60,7 +60,7 @@ expr returns [com.aps0.interfaces.IASTexpression node]
 	|'false'																		#ConstFalse
 	|constNum=NUM		 															#ConstNumeric
 	|'(' op='not' arg=expr ')'														#Unary
-	|'(' op=('and' | 'or' | 'and')  arg1=expr arg2=expr ')'  						#Binary
+	|'(' op=('and' | 'or' )  arg1=expr arg2=expr ')'  								#Binary
 	|'(' op=('add' | 'mul' | 'sub'| 'div'| 'lt' |'eq' ) arg1=expr arg2=expr ')'  	#Binary
 	;
 

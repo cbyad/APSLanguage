@@ -9,7 +9,6 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 import antlr4.APSgrammar0Listener;
 import antlr4.APSgrammar0Parser.AlternativeContext;
-import antlr4.APSgrammar0Parser.BinaryContext;
 import antlr4.APSgrammar0Parser.ConsTrueContext;
 import antlr4.APSgrammar0Parser.ConstFalseContext;
 import antlr4.APSgrammar0Parser.ConstNumericContext;
@@ -24,7 +23,10 @@ import antlr4.APSgrammar0Parser.VariableAssignContext;
 import antlr4.APSgrammar0Parser.VariableDecContext;
 import antlr4.APSgrammar0Parser.WhileContext;
 
+import com.aps0.ast.ASTdecCmds;
 import com.aps0.interfaces.IASTcommands;
+import com.aps0.interfaces.IASTdecCmds;
+import com.aps0.interfaces.IASTdeclaration;
 import com.aps0.interfaces.IASTfactory;
 
 import static antlr4.APSgrammar0Parser.*;
@@ -54,8 +56,23 @@ public class APSListener implements APSgrammar0Listener {
 	
 	@Override
 	public void exitProgramm(ProgrammContext ctx) {
-
-		ctx.node=factory.newProgram(ctx.listcmds.get(0).node);//
+		/*
+		IASTdecCmds d = new ASTdecCmds(new IASTdeclaration() {
+			
+			@Override
+			public String toProlog() {
+				return null;
+			}
+		}, toCommands(ctx.listcmds));
+		IASTcommands cmds= d;
+		
+		ctx.node=factory.newProgram(cmds);
+		*/
+		
+		ctx.node= factory.newProgram(toCommands(ctx.listcmds));
+	
+		
+		
 	}
 	
 	/*
@@ -102,7 +119,7 @@ public class APSListener implements APSgrammar0Listener {
 	}
 	@Override
 	public void exitWhile(WhileContext ctx) {
-		ctx.node=factory.newWhile(ctx.condition.node, ctx.body.node);
+		ctx.node=factory.newWhile(ctx.condition.node, toCommands(ctx.body)  );
 		
 	}
 	@Override
@@ -134,7 +151,9 @@ public class APSListener implements APSgrammar0Listener {
 	public void exitBinary(BinaryContext ctx) {
 		ctx.node=factory.newBinaryOperation(factory.newOperator(ctx.op.getText()),
 				ctx.arg1.node, ctx.arg2.node);
+		
 	}
+
 	
 	@Override
 	public void exitTypeBool(TypeBoolContext ctx) {

@@ -1,5 +1,23 @@
+[ 	VAR t int; 
+	VAR toto bool ;
+	SET toto false ;
+	SET t (add (sub 4 (eq true false) ) (div 0 (mul -3 5))) ;
+	
+	WHILE (not true) 
+			[ SET t (add 2 2 ) ;
+			
+			IF false  4
+			]
+	
+ ]
+
+
+
+
+
+/*
 [
 	VAR toto int ;
  	SET toto (mul (add 2 4) 4) 
 ]
-
+*/

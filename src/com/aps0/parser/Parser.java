@@ -44,7 +44,7 @@ public class Parser {
 
 			File file = new File(args[0]);
 			IASTprogram prog = parser.parse(file);
-			System.out.println((prog).toProlog());
+			System.out.println("TERME PROLOG--->"+(prog).toProlog());
 
 		} catch (ParseException e) {
 			e.printStackTrace();

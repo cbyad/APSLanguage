@@ -372,12 +372,13 @@ public class APSgrammar0Parser extends Parser {
 	}
 	public static class WhileContext extends StatContext {
 		public ExprContext condition;
-		public ProgContext body;
+		public CmdsContext cmds;
+		public List<CmdsContext> body = new ArrayList<CmdsContext>();
+		public CmdsContext cmds() {
+			return getRuleContext(CmdsContext.class,0);
+		}
 		public ExprContext expr() {
 			return getRuleContext(ExprContext.class,0);
-		}
-		public ProgContext prog() {
-			return getRuleContext(ProgContext.class,0);
 		}
 		public WhileContext(StatContext ctx) { copyFrom(ctx); }
 		@Override
@@ -394,7 +395,7 @@ public class APSgrammar0Parser extends Parser {
 		StatContext _localctx = new StatContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_stat);
 		try {
-			setState(52);
+			setState(54);
 			switch (_input.LA(1)) {
 			case T__0:
 				_localctx = new VariableAssignContext(_localctx);
@@ -421,7 +422,10 @@ public class APSgrammar0Parser extends Parser {
 				{
 				setState(48); match(T__21);
 				setState(49); ((WhileContext)_localctx).condition = expr();
-				setState(50); ((WhileContext)_localctx).body = prog();
+				setState(50); match(T__17);
+				setState(51); ((WhileContext)_localctx).cmds = cmds();
+				((WhileContext)_localctx).body.add(((WhileContext)_localctx).cmds);
+				setState(52); match(T__14);
 				}
 				break;
 			default:
@@ -479,20 +483,20 @@ public class APSgrammar0Parser extends Parser {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
 		enterRule(_localctx, 8, RULE_type);
 		try {
-			setState(56);
+			setState(58);
 			switch (_input.LA(1)) {
 			case T__7:
 				_localctx = new TypeIntContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(54); match(T__7);
+				setState(56); match(T__7);
 				}
 				break;
 			case T__13:
 				_localctx = new TypeBoolContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(55); match(T__13);
+				setState(57); match(T__13);
 				}
 				break;
 			default:
@@ -600,71 +604,71 @@ public class APSgrammar0Parser extends Parser {
 		enterRule(_localctx, 10, RULE_expr);
 		int _la;
 		try {
-			setState(78);
+			setState(80);
 			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				_localctx = new ConsTrueContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(58); match(T__20);
+				setState(60); match(T__20);
 				}
 				break;
 			case 2:
 				_localctx = new ConstFalseContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(59); match(T__1);
+				setState(61); match(T__1);
 				}
 				break;
 			case 3:
 				_localctx = new ConstNumericContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(60); ((ConstNumericContext)_localctx).constNum = match(NUM);
+				setState(62); ((ConstNumericContext)_localctx).constNum = match(NUM);
 				}
 				break;
 			case 4:
 				_localctx = new UnaryContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(61); match(T__5);
-				setState(62); ((UnaryContext)_localctx).op = match(T__2);
-				setState(63); ((UnaryContext)_localctx).arg = expr();
-				setState(64); match(T__4);
+				setState(63); match(T__5);
+				setState(64); ((UnaryContext)_localctx).op = match(T__2);
+				setState(65); ((UnaryContext)_localctx).arg = expr();
+				setState(66); match(T__4);
 				}
 				break;
 			case 5:
 				_localctx = new BinaryContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(66); match(T__5);
-				setState(67);
+				setState(68); match(T__5);
+				setState(69);
 				((BinaryContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !(_la==T__12 || _la==T__3) ) {
 					((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 				}
 				consume();
-				setState(68); ((BinaryContext)_localctx).arg1 = expr();
-				setState(69); ((BinaryContext)_localctx).arg2 = expr();
-				setState(70); match(T__4);
+				setState(70); ((BinaryContext)_localctx).arg1 = expr();
+				setState(71); ((BinaryContext)_localctx).arg2 = expr();
+				setState(72); match(T__4);
 				}
 				break;
 			case 6:
 				_localctx = new BinaryContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(72); match(T__5);
-				setState(73);
+				setState(74); match(T__5);
+				setState(75);
 				((BinaryContext)_localctx).op = _input.LT(1);
 				_la = _input.LA(1);
 				if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__22) | (1L << T__19) | (1L << T__16) | (1L << T__10) | (1L << T__8) | (1L << T__6))) != 0)) ) {
 					((BinaryContext)_localctx).op = (Token)_errHandler.recoverInline(this);
 				}
 				consume();
-				setState(74); ((BinaryContext)_localctx).arg1 = expr();
-				setState(75); ((BinaryContext)_localctx).arg2 = expr();
-				setState(76); match(T__4);
+				setState(76); ((BinaryContext)_localctx).arg1 = expr();
+				setState(77); ((BinaryContext)_localctx).arg2 = expr();
+				setState(78); match(T__4);
 				}
 				break;
 			}
@@ -681,28 +685,28 @@ public class APSgrammar0Parser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\37S\4\2\t\2\4\3\t"+
+		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3\37U\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\2\3\2\3\3\3\3\3\3\7\3\26"+
 		"\n\3\f\3\16\3\31\13\3\3\3\3\3\3\3\3\3\5\3\37\n\3\3\4\3\4\3\4\3\4\3\4\3"+
-		"\4\3\4\3\4\5\4)\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\5"+
-		"\5\67\n\5\3\6\3\6\5\6;\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7"+
-		"\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7Q\n\7\3\7\2\2\b\2\4\6\b\n\f\2"+
-		"\4\4\2\r\r\26\26\b\2\3\3\6\6\t\t\17\17\21\21\23\23W\2\16\3\2\2\2\4\36"+
-		"\3\2\2\2\6(\3\2\2\2\b\66\3\2\2\2\n:\3\2\2\2\fP\3\2\2\2\16\17\7\b\2\2\17"+
-		"\20\5\4\3\2\20\21\7\13\2\2\21\3\3\2\2\2\22\27\5\b\5\2\23\24\7\7\2\2\24"+
-		"\26\5\4\3\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30"+
-		"\37\3\2\2\2\31\27\3\2\2\2\32\33\5\6\4\2\33\34\7\7\2\2\34\35\5\4\3\2\35"+
-		"\37\3\2\2\2\36\22\3\2\2\2\36\32\3\2\2\2\37\5\3\2\2\2 !\7\20\2\2!\"\7\32"+
-		"\2\2\")\5\n\6\2#$\7\16\2\2$%\7\32\2\2%&\5\n\6\2&\'\5\f\7\2\')\3\2\2\2"+
-		"( \3\2\2\2(#\3\2\2\2)\7\3\2\2\2*+\7\31\2\2+,\7\32\2\2,\67\5\f\7\2-.\7"+
-		"\n\2\2./\5\f\7\2/\60\5\2\2\2\60\61\5\2\2\2\61\67\3\2\2\2\62\63\7\4\2\2"+
-		"\63\64\5\f\7\2\64\65\5\2\2\2\65\67\3\2\2\2\66*\3\2\2\2\66-\3\2\2\2\66"+
-		"\62\3\2\2\2\67\t\3\2\2\28;\7\22\2\29;\7\f\2\2:8\3\2\2\2:9\3\2\2\2;\13"+
-		"\3\2\2\2<Q\7\5\2\2=Q\7\30\2\2>Q\7\33\2\2?@\7\24\2\2@A\7\27\2\2AB\5\f\7"+
-		"\2BC\7\25\2\2CQ\3\2\2\2DE\7\24\2\2EF\t\2\2\2FG\5\f\7\2GH\5\f\7\2HI\7\25"+
-		"\2\2IQ\3\2\2\2JK\7\24\2\2KL\t\3\2\2LM\5\f\7\2MN\5\f\7\2NO\7\25\2\2OQ\3"+
-		"\2\2\2P<\3\2\2\2P=\3\2\2\2P>\3\2\2\2P?\3\2\2\2PD\3\2\2\2PJ\3\2\2\2Q\r"+
-		"\3\2\2\2\b\27\36(\66:P";
+		"\4\3\4\3\4\5\4)\n\4\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3\5\3"+
+		"\5\3\5\5\59\n\5\3\6\3\6\5\6=\n\6\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3"+
+		"\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\3\7\5\7S\n\7\3\7\2\2\b\2\4\6\b"+
+		"\n\f\2\4\4\2\r\r\26\26\b\2\3\3\6\6\t\t\17\17\21\21\23\23Y\2\16\3\2\2\2"+
+		"\4\36\3\2\2\2\6(\3\2\2\2\b8\3\2\2\2\n<\3\2\2\2\fR\3\2\2\2\16\17\7\b\2"+
+		"\2\17\20\5\4\3\2\20\21\7\13\2\2\21\3\3\2\2\2\22\27\5\b\5\2\23\24\7\7\2"+
+		"\2\24\26\5\4\3\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2"+
+		"\2\30\37\3\2\2\2\31\27\3\2\2\2\32\33\5\6\4\2\33\34\7\7\2\2\34\35\5\4\3"+
+		"\2\35\37\3\2\2\2\36\22\3\2\2\2\36\32\3\2\2\2\37\5\3\2\2\2 !\7\20\2\2!"+
+		"\"\7\32\2\2\")\5\n\6\2#$\7\16\2\2$%\7\32\2\2%&\5\n\6\2&\'\5\f\7\2\')\3"+
+		"\2\2\2( \3\2\2\2(#\3\2\2\2)\7\3\2\2\2*+\7\31\2\2+,\7\32\2\2,9\5\f\7\2"+
+		"-.\7\n\2\2./\5\f\7\2/\60\5\2\2\2\60\61\5\2\2\2\619\3\2\2\2\62\63\7\4\2"+
+		"\2\63\64\5\f\7\2\64\65\7\b\2\2\65\66\5\4\3\2\66\67\7\13\2\2\679\3\2\2"+
+		"\28*\3\2\2\28-\3\2\2\28\62\3\2\2\29\t\3\2\2\2:=\7\22\2\2;=\7\f\2\2<:\3"+
+		"\2\2\2<;\3\2\2\2=\13\3\2\2\2>S\7\5\2\2?S\7\30\2\2@S\7\33\2\2AB\7\24\2"+
+		"\2BC\7\27\2\2CD\5\f\7\2DE\7\25\2\2ES\3\2\2\2FG\7\24\2\2GH\t\2\2\2HI\5"+
+		"\f\7\2IJ\5\f\7\2JK\7\25\2\2KS\3\2\2\2LM\7\24\2\2MN\t\3\2\2NO\5\f\7\2O"+
+		"P\5\f\7\2PQ\7\25\2\2QS\3\2\2\2R>\3\2\2\2R?\3\2\2\2R@\3\2\2\2RA\3\2\2\2"+
+		"RF\3\2\2\2RL\3\2\2\2S\r\3\2\2\2\b\27\36(8<R";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

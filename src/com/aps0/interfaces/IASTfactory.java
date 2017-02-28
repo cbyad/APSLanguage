@@ -6,7 +6,7 @@ import com.aps0.ast.ASTdecCmds;
 public interface IASTfactory {
 	
     IASTprogram newProgram(
-            IASTcommands command);
+            IASTcommands[] command);
     
     /*
     IASTcommands newCommands(
@@ -36,7 +36,7 @@ public interface IASTfactory {
 
     IASTexpression newBooleanConstant(String value);
 
-    IASTstatement  newWhile(IASTexpression condition , IASTprogram body);
+    IASTstatement  newWhile(IASTexpression condition , IASTcommands[] body);
    
     IASTstatement newAssignment(IASTvariable variable , IASTexpression value);
     

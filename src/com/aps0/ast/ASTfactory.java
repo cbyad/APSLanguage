@@ -20,7 +20,7 @@ import com.aps0.interfaces.IASTvariableDec;
 public class ASTfactory implements IASTfactory {
 
     @Override
-	public IASTprogram newProgram(IASTcommands command) {
+	public IASTprogram newProgram(IASTcommands[] command) {
         return new ASTprogram(command);
     }
     
@@ -67,7 +67,7 @@ public class ASTfactory implements IASTfactory {
 	}
 
 	@Override
-	public IASTstatement newWhile(IASTexpression condition, IASTprogram body) {
+	public IASTstatement newWhile(IASTexpression condition, IASTcommands[] body) {
 		return new ASTwhile(condition, body);
 	}
 

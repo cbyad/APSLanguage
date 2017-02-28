@@ -5,10 +5,10 @@ import com.aps0.interfaces.IASTprogram;
 
 public class ASTprogram extends AST implements IASTprogram {
 	
-    protected IASTcommands commands;
+    protected IASTcommands[] commands;
     
     
-    public ASTprogram(IASTcommands commands) {
+    public ASTprogram(IASTcommands[] commands) {
         this.commands = commands;
     }
 
@@ -16,7 +16,7 @@ public class ASTprogram extends AST implements IASTprogram {
     
    
     @Override
-	public IASTcommands getListCmds() {
+	public IASTcommands[] getListCmds() {
         return this.commands;
     }
 
@@ -24,6 +24,16 @@ public class ASTprogram extends AST implements IASTprogram {
 
 	@Override
 	public String toProlog() {
-		return "prog([ "+commands.toProlog()+"])";
+		
+		StringBuilder str= new StringBuilder();
+		str.append("prog([");
+		
+		for(int i =0 ;i< this.commands.length;i++){
+			str.append(this.commands[i].toProlog());	
+		}
+		
+		str.append("])");
+		return str.toString();
+		//return "prog([ "+commands.toProlog()+"])";
 	}
 }
