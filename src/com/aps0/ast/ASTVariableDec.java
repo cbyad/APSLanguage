@@ -29,5 +29,4 @@ IASTvariableDec {
 	public String toProlog() {
 		return "var(\""+description+"\","+type.toProlog()+")";
 	}
-
 }
