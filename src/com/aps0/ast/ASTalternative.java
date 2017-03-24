@@ -4,6 +4,8 @@ import com.aps0.annotation.OrNull;
 import com.aps0.interfaces.IASTalternative;
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTexpression;
+import com.aps0.interpreter.Environnement;
+import com.aps0.interpreter.Memoire;
 
 public class ASTalternative extends ASTstatement
 implements IASTalternative {
@@ -71,5 +73,33 @@ implements IASTalternative {
 
 			return str.toString() ;
 		}
+	}
+
+	@Override
+	public void eval(Environnement env, Memoire mem) {
+		
+		try {
+			Environnement envNext =(Environnement)env.clone();
+			
+			
+			if((Boolean)this.condition.eval(env, mem).equals(true) ){
+				
+				for(int i=0 ; i<consequence.length;i++){
+					
+				consequence[i].eval(env,mem);
+				}	
+			}
+			
+			
+			
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		} 
+		
+		
+		
+
+		
+		
 	}
 }

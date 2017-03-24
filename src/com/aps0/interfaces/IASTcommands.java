@@ -1,6 +1,8 @@
 package com.aps0.interfaces;
 
-public abstract interface IASTcommands extends IAST {
+import com.aps0.interpreter.Commandes;
+
+public abstract interface IASTcommands extends IAST,Commandes {
 	
 }
 

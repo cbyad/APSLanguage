@@ -3,6 +3,8 @@ package com.aps0.ast;
 import com.aps0.interfaces.IASTconstantDeclaration;
 import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASTtype;
+import com.aps0.interpreter.Environnement;
+import com.aps0.interpreter.Memoire;
 
 public class ASTconstantDeclaration extends ASTdeclaration 
 implements IASTconstantDeclaration{
@@ -39,6 +41,12 @@ implements IASTconstantDeclaration{
 	@Override
 	public String toProlog() {
 		return "const(\""+description+"\","+type.toProlog()+","+expression.toProlog()+")";
+	}
+
+	@Override
+	public void eval(Environnement env, Memoire mem) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

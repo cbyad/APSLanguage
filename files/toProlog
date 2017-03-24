@@ -1,1 +1,1 @@
-prog([var("t",int),const("xyz2",bool,500),var("toto",bool),set("toto",false),set("t",add(sub(4 , eq(true , false)) , div(0 , mul(-3 , 5)))),while(not(true),[set("t",add(2 , 2)),if(false,[set("a",true)],[set("a",false)])])]).
+prog([var("t",int),const("xyz2",int,500),var("toto",bool),set("toto",false),set("t",add(sub(4 , eq(true , false)) , div(0 , mul(-3 , 5)))),while(not(true),[set("t",add(2 , 2)),if(false,[set("a",true)],[set("a",false)])])])

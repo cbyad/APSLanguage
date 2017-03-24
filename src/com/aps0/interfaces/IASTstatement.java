@@ -1,5 +1,7 @@
 package com.aps0.interfaces;
 
-public abstract interface IASTstatement extends IASTcommands{
+import com.aps0.interpreter.Statement;
+
+public abstract interface IASTstatement extends IASTcommands, Statement{
 
 }

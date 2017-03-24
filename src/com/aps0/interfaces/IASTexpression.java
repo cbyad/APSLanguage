@@ -1,5 +1,8 @@
 package com.aps0.interfaces;
 
-public abstract interface IASTexpression extends IAST {
+import com.aps0.interpreter.Expression;
+
+public abstract interface IASTexpression extends IAST,Expression { // expression
+	
 }
  

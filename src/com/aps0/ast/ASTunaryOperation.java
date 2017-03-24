@@ -1,9 +1,13 @@
 
 package com.aps0.ast;
 
+import java.util.Objects;
+
 import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASToperator;
 import com.aps0.interfaces.IASTunaryOperation;
+import com.aps0.interpreter.Environnement;
+import com.aps0.interpreter.Memoire;
 
 public class ASTunaryOperation extends ASTexpression implements IASTunaryOperation {
     
@@ -34,4 +38,30 @@ public class ASTunaryOperation extends ASTexpression implements IASTunaryOperati
 	public String toProlog() {
 	return operator.toProlog()+"("+operand.toProlog()+")";
 	}
+
+	@Override
+	public Object eval(Environnement env, Memoire mem) {
+		
+		Objects.requireNonNull(env,"env null");
+		Objects.requireNonNull(mem,"mem null");
+		
+		
+		if(operator.getName().equals("not")){
+			
+			if(operand.eval(env, mem) instanceof  Boolean){
+				
+				Boolean b  = (Boolean)operand.eval(env, mem) ;
+				
+				return !b.booleanValue();
+			}
+			throw new Error("not boolean");
+		}
+		
+		else {
+			throw new Error("operand non def");
+		}
+		
+		
+}
+	
 }

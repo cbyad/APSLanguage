@@ -3,6 +3,8 @@ package com.aps0.ast;
 
 import com.aps0.interfaces.IASTtype;
 import com.aps0.interfaces.IASTvariable;
+import com.aps0.interpreter.Environnement;
+import com.aps0.interpreter.Memoire;
 
 public class ASTvariable extends ASTnamed implements IASTvariable {
 
@@ -18,6 +20,12 @@ public class ASTvariable extends ASTnamed implements IASTvariable {
 	public String toProlog() {
 		
 		return getName();
+	}
+
+	@Override
+	public void eval(Environnement env, Memoire mem) {
+		// TODO Auto-generated method stub
+		
 	}
 
  

@@ -49,5 +49,5 @@ type(G,[],void).
 type(G,prog(CS),void). :- type(G,CS,void).
 
 
-%OuvertureFichier 
+%OuvertureFichier
 typeFile(F) :-   open(F,read,IC),  read(IC,T), type([],T,void).

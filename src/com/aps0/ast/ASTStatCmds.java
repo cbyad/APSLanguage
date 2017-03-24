@@ -3,6 +3,8 @@ package com.aps0.ast;
 import com.aps0.interfaces.IASTstatCmds;
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTstatement;
+import com.aps0.interpreter.Environnement;
+import com.aps0.interpreter.Memoire;
 
 public class ASTstatCmds extends ASTcommands implements IASTstatCmds {
 
@@ -37,5 +39,11 @@ public class ASTstatCmds extends ASTcommands implements IASTstatCmds {
 	@Override
 	public IASTcommands[] getCommandes() {
 		return  listcmds;
+	}
+
+	@Override
+	public void eval(Environnement env, Memoire mem) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -64,21 +64,7 @@ public class Printer {
 	        } catch (Exception e) {
 	            System.out.println("Impossible de creer le fichier");
 	        }
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+	
 
 	}
 }
