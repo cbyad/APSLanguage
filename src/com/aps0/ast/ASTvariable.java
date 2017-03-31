@@ -24,9 +24,9 @@ public class ASTvariable extends ASTnamed implements IASTvariable {
 
 	@Override
 	public void eval(Environnement env, Memoire mem) {
-		// TODO Auto-generated method stub
-		
 	}
+
+	
 
  
 }

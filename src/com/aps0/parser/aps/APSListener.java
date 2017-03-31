@@ -1,6 +1,7 @@
 package com.aps0.parser.aps;
 
 import java.util.List;
+
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -12,6 +13,7 @@ import antlr4.APSgrammar0Parser.ConstFalseContext;
 import antlr4.APSgrammar0Parser.ConstNumericContext;
 import antlr4.APSgrammar0Parser.ConstantDecContext;
 import antlr4.APSgrammar0Parser.DecCmdsContext;
+import antlr4.APSgrammar0Parser.IdentExprContext;
 import antlr4.APSgrammar0Parser.ProgrammContext;
 import antlr4.APSgrammar0Parser.StatCmdsContext;
 import antlr4.APSgrammar0Parser.TypeBoolContext;
@@ -120,6 +122,14 @@ public class APSListener implements APSgrammar0Listener {
 		ctx.node =factory.newNumericConstant(ctx.constNum.getText());
 
 	}
+	
+	@Override
+	public void exitIdentExpr(IdentExprContext ctx) {
+		ctx.node= factory.newIdentExpr(ctx.ident.getText());
+		
+	}
+
+	
 	@Override
 	public void exitBinary(BinaryContext ctx) {
 		ctx.node=factory.newBinaryOperation(factory.newOperator(ctx.op.getText()),
@@ -171,7 +181,9 @@ public class APSListener implements APSgrammar0Listener {
 	public void enterProgramm(ProgrammContext ctx) {}
 	public void enterDecCmds(DecCmdsContext ctx) {}
 	public void enterStatCmds(StatCmdsContext ctx) {}
+	public void enterIdentExpr(IdentExprContext ctx) {}
 
+	
 
 	/*
 	 * ANTLRGrammarBaseListener, automatiquement généré, fournit

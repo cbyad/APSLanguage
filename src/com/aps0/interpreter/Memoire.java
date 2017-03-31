@@ -8,19 +8,15 @@ public class Memoire { //Adre--->valeurs
 	private HashMap<Adresse, Object> mem;
 
 	public  Memoire() {
-		mem= new HashMap<Adresse, Object>() ;
+		mem= new HashMap<Adresse, Object>();
 	}
-
-
 
 	public HashMap<Adresse, Object> getMem(){
 		return mem ;
 	}
 
-
-
-	public void alloc (){	
-		mem.put(new Adresse(),null);	
+	public void alloc (Adresse a){	
+		mem.put(a,null);
 	}
 
 	public void modif(Adresse a , Object v){
@@ -30,10 +26,30 @@ public class Memoire { //Adre--->valeurs
 		else  throw new Error("error memory");
 	}
 	
-	
-	public void desalloc(){
-		//TODO
+	public void restriction(Environnement env) {
+		for (Adresse adresse : mem.keySet()) {
+			if (!(env.getEnv().containsValue(adresse)))
+			{
+				mem.remove(adresse);
+			}
+		}
+		
+		System.out.println(this.mem);
+		
 	}
 
+	@Override
+	public String toString() {
+		
+		StringBuilder str = new StringBuilder();
+		str.append("Memoire---->\n");
+		str.append(mem+"\n \n");
+		 return str.toString();
+		
+		
+	}
+	
+	
+	
 
 }

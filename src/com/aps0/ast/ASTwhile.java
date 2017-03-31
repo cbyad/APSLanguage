@@ -1,5 +1,6 @@
 package com.aps0.ast;
 
+
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTexpression;
 import com.aps0.interfaces.IASTwhile;
@@ -47,7 +48,23 @@ public class ASTwhile extends ASTstatement implements IASTwhile
 
 	@Override
 	public void eval(Environnement env, Memoire mem) {
-		// TODO Auto-generated method stub
-		
+		try {
+			Environnement envNext =(Environnement)env.clone();
+
+
+			while((Boolean)this.condition.eval(env, mem).equals(true) ){
+
+				for(int i=0 ; i<body.length;i++){
+
+					body[i].eval(env,mem);
+					env=envNext;
+					mem.restriction(env);
+					
+				}	
+			}
+		} catch (CloneNotSupportedException e) {
+			e.printStackTrace();
+		} 
+		System.out.println(env + "\n" + mem);
 	}
 }

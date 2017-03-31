@@ -1,3 +1,4 @@
+/*
 [ 	VAR t int; 
 	CONST xyz2 int 500;
 	VAR toto bool ;
@@ -12,13 +13,25 @@
 				[SET a false]
 			]
 ]
+*/
 
-/*
 [
 	VAR toto int ;
- 	SET toto (mul (add 2 4) 4)
+ 	SET toto (mul (add 2 4) 4);
+ 	
+ 	WHILE (lt toto 20) [
+ 	 
+			SET toto -1;
+
+			IF (eq toto -1)
+				[SET toto 0]
+				[SET toto 20]
+	]
+ 	
+ 	
 ]
 
+/*
 
 [
   CONST n int 42;

@@ -23,6 +23,18 @@ public interface APSgrammar0Listener extends ParseTreeListener {
 	 */
 	void exitConstantDec(@NotNull APSgrammar0Parser.ConstantDecContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code IdentExpr}
+	 * labeled alternative in {@link APSgrammar0Parser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterIdentExpr(@NotNull APSgrammar0Parser.IdentExprContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code IdentExpr}
+	 * labeled alternative in {@link APSgrammar0Parser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitIdentExpr(@NotNull APSgrammar0Parser.IdentExprContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code Alternative}
 	 * labeled alternative in {@link APSgrammar0Parser#stat}.
 	 * @param ctx the parse tree

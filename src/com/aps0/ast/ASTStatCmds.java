@@ -1,5 +1,7 @@
 package com.aps0.ast;
 
+import java.util.Objects;
+
 import com.aps0.interfaces.IASTstatCmds;
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTstatement;
@@ -43,7 +45,13 @@ public class ASTstatCmds extends ASTcommands implements IASTstatCmds {
 
 	@Override
 	public void eval(Environnement env, Memoire mem) {
-		// TODO Auto-generated method stub
+		Objects.requireNonNull(env,"env null");
+		Objects.requireNonNull(mem,"mem null");
 		
+		statement.eval(env, mem);
+		for (int i = 0; i < listcmds.length; i++) {
+			listcmds[i].eval(env, mem);
+		}
+		System.out.println(env + "\n" + mem);
 	}
 }

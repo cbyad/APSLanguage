@@ -44,4 +44,6 @@ public interface IASTfactory {
 	IASTstatCmds newStatCmds(IASTstatement statement, IASTcommands[] listcmds);
 	
 	IASTdecCmds newDecCmds(IASTdeclaration declaration, IASTcommands[] listcmds);
+
+	IASTexpression newIdentExpr(String ident);
 }

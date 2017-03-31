@@ -39,6 +39,7 @@ implements IASTassignment{
 			Adresse a = (Adresse)env.getEnv().get(this.variable.getName());
 			Object v =this.expression.eval(env, mem);
 			mem.modif(a, v);
+			System.out.println(env + "\n" + mem);
 		}
 	}
     

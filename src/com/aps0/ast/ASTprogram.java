@@ -1,7 +1,10 @@
 package com.aps0.ast;
 
+
 import com.aps0.interfaces.IASTcommands;
 import com.aps0.interfaces.IASTprogram;
+import com.aps0.interpreter.Environnement;
+import com.aps0.interpreter.Memoire;
 
 public class ASTprogram extends AST implements IASTprogram {
 	
@@ -29,4 +32,15 @@ public class ASTprogram extends AST implements IASTprogram {
 		
 		return str.toString();
 	}
+
+	@Override
+	public void eval(Environnement env, Memoire mem) {
+		System.out.println(env + "\n" + mem);
+		for(int i=0 ; i<commands.length;i++){
+			commands[i].eval(env,mem);
+		}
+		mem.restriction(env);
+		System.out.println(env + "\n" + mem);
+	}
+	
 }

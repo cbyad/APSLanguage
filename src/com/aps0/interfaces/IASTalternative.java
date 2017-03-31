@@ -8,4 +8,5 @@ public interface IASTalternative extends IASTstatement {
 	IASTcommands[] getConsequence();
 	@OrNull IASTcommands[] getAlternant();
 	boolean isTernary();
+	
 }

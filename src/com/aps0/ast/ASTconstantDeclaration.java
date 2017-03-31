@@ -45,8 +45,8 @@ implements IASTconstantDeclaration{
 
 	@Override
 	public void eval(Environnement env, Memoire mem) {
-		// TODO Auto-generated method stub
-		
+		env.getEnv().put(description, expression.eval(env, mem));
+		System.out.println(env + "\n" + mem);
 	}
 
 	

@@ -1,5 +1,7 @@
 package com.aps0.interfaces;
 
-public abstract interface IASTprogram extends IAST{
+import com.aps0.interpreter.Block;
+
+public abstract interface IASTprogram extends IAST, Block{
 	IASTcommands[] getListCmds() ;
 }

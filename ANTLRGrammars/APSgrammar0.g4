@@ -59,6 +59,7 @@ expr returns [com.aps0.interfaces.IASTexpression node]
 	:'true'																			#ConsTrue
 	|'false'																		#ConstFalse
 	|constNum=NUM		 															#ConstNumeric
+	|ident=IDENT                      												#IdentExpr
 	|'(' op='not' arg=expr ')'														#Unary
 	|'(' op=('and' | 'or' )  arg1=expr arg2=expr ')'  								#Binary
 	|'(' op=('add' | 'mul' | 'sub'| 'div'| 'lt' |'eq' ) arg1=expr arg2=expr ')'  	#Binary

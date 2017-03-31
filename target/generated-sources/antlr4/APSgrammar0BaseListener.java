@@ -31,6 +31,18 @@ public class APSgrammar0BaseListener implements APSgrammar0Listener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterIdentExpr(@NotNull APSgrammar0Parser.IdentExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitIdentExpr(@NotNull APSgrammar0Parser.IdentExprContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterAlternative(@NotNull APSgrammar0Parser.AlternativeContext ctx) { }
 	/**
 	 * {@inheritDoc}

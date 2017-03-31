@@ -52,6 +52,7 @@ public class ASTunaryOperation extends ASTexpression implements IASTunaryOperati
 				
 				Boolean b  = (Boolean)operand.eval(env, mem) ;
 				
+				System.out.println(env + "\n" + mem);
 				return !b.booleanValue();
 			}
 			throw new Error("not boolean");

@@ -33,6 +33,7 @@ public class ASTboolean extends ASTconstant implements IASTboolean {
 		
 		Objects.requireNonNull(env,"env null");
 		Objects.requireNonNull(mem,"mem null");
+		System.out.println(env + "\n" + mem);
 		return getValue();
 	}
 	

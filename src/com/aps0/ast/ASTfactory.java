@@ -59,6 +59,7 @@ public class ASTfactory implements IASTfactory {
 	public IASTexpression newNumericConstant(String value) {
 		return new ASTnumeric(value);
 	}
+	
 
 	@Override
 	public IASTexpression newBooleanConstant(String value) {
@@ -100,5 +101,11 @@ public class ASTfactory implements IASTfactory {
 	@Override
 	public  IASTstatCmds newStatCmds(IASTstatement statement, IASTcommands[] listcmds) {
 		return new ASTstatCmds(statement, listcmds);
+	}
+
+	@Override
+	public IASTexpression newIdentExpr(String ident) {
+		return new ASTident(ident);
+
 	}
 }

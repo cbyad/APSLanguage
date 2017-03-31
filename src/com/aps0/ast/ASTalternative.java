@@ -77,29 +77,40 @@ implements IASTalternative {
 
 	@Override
 	public void eval(Environnement env, Memoire mem) {
-		
+
 		try {
 			Environnement envNext =(Environnement)env.clone();
-			
-			
+
+
 			if((Boolean)this.condition.eval(env, mem).equals(true) ){
-				
+
 				for(int i=0 ; i<consequence.length;i++){
-					
-				consequence[i].eval(env,mem);
+
+					consequence[i].eval(env,mem);
 				}	
 			}
-			
-			
-			
+			else
+			{
+				for(int i=0 ; i<consequence.length;i++){
+					alternant[i].eval(env,mem);
+				}	
+			}
+			env=envNext;
+			mem.restriction(env);
+
+
 		} catch (CloneNotSupportedException e) {
 			e.printStackTrace();
 		} 
-		
-		
-		
-
-		
-		
+		System.out.println(env + "\n" + mem);
 	}
+
 }
+
+
+
+
+
+
+
+

@@ -2,6 +2,7 @@ package com.aps0.ast;
 
 import com.aps0.interfaces.IASTtype;
 import com.aps0.interfaces.IASTvariableDec;
+import com.aps0.interpreter.Adresse;
 import com.aps0.interpreter.Environnement;
 import com.aps0.interpreter.Memoire;
 
@@ -34,7 +35,11 @@ IASTvariableDec {
 
 	@Override
 	public void eval(Environnement env, Memoire mem) {
-		// TODO Auto-generated method stub
+		Adresse a=new Adresse();
+		env.getEnv().put(description, a);
+		mem.alloc(a);
 		
+		System.out.println(env + "\n" + mem);
+
 	}
 }

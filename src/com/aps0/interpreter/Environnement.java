@@ -20,14 +20,29 @@ public class Environnement implements Cloneable{ // ident-->val+add(object)
 		return env ;
 	}
 
+	
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		
-		return this.env.clone() ;
+	HashMap< String, Object> map  = (HashMap<String, Object>) this.env.clone() ;
+
+	Environnement cloneEnv = new Environnement() ;
+	cloneEnv.getEnv().putAll(map); 
+	
+	return (Environnement)cloneEnv ;
 		
 	}
 
-
+	@Override
+	public String toString() {
+		
+		StringBuilder str = new StringBuilder();
+		str.append("Environnement---->\n");
+		str.append(env);
+		 return str.toString();
+		
+	}
+	
 	
 
 }
