@@ -1,0 +1,5 @@
+/*  */
+[
+VAR toto bool ;
+SET toto true
+]

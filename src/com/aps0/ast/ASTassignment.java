@@ -36,11 +36,16 @@ implements IASTassignment{
 	public void eval(Environnement env, Memoire mem) {
 		
 		if(env.getEnv().containsKey(this.variable.getName())){
+			
+		
+			
 			Adresse a = (Adresse)env.getEnv().get(this.variable.getName());
 			Object v =this.expression.eval(env, mem);
+			System.out.println(a);
 			mem.modif(a, v);
 			System.out.println(env + "\n" + mem);
 		}
+		else throw new Error("Assigment fail");
 	}
     
 }

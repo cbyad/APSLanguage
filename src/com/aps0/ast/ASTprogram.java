@@ -35,12 +35,12 @@ public class ASTprogram extends AST implements IASTprogram {
 
 	@Override
 	public void eval(Environnement env, Memoire mem) {
-		System.out.println(env + "\n" + mem);
+		System.out.println("Etat avant evaluation "+env + mem);
 		for(int i=0 ; i<commands.length;i++){
 			commands[i].eval(env,mem);
 		}
 		mem.restriction(env);
-		System.out.println(env + "\n" + mem);
+		System.out.println("Etat apres evaluation "+env + mem);
 	}
 	
 }

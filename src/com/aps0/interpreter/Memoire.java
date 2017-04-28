@@ -21,11 +21,16 @@ public class Memoire { //Adre--->valeurs
 
 	public void modif(Adresse a , Object v){
 		if(mem.containsKey(a)){
+			
+			System.out.println(a +" \t " +v);
 			mem.put(a, v);
+			System.out.println(a +" \t " +v+"\n");
+			if(v==null) System.out.println(a +" \t " +v);
 		}
 		else  throw new Error("error memory");
 	}
-	
+
+	//Flush env by unset variables
 	public void restriction(Environnement env) {
 		for (Adresse adresse : mem.keySet()) {
 			if (!(env.getEnv().containsValue(adresse)))
@@ -33,23 +38,13 @@ public class Memoire { //Adre--->valeurs
 				mem.remove(adresse);
 			}
 		}
-		
-		System.out.println(this.mem);
-		
+
 	}
 
 	@Override
 	public String toString() {
-		
-		StringBuilder str = new StringBuilder();
-		str.append("Memoire---->\n");
-		str.append(mem+"\n \n");
-		 return str.toString();
-		
-		
+		return "Memoire---->"+ mem ;
 	}
-	
-	
-	
+
 
 }

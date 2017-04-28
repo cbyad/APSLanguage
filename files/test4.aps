@@ -1,0 +1,20 @@
+/*  */
+[
+
+VAR x int ;
+VAR toto bool ;
+
+SET x 4 ;
+
+	IF (eq x (add 2 2 ))
+	
+	[
+		SET toto true
+		
+	]
+	
+	[
+		SET toto false 
+	]
+	
+]

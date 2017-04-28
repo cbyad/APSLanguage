@@ -9,7 +9,7 @@ public class InputFromFile implements Input {
     public InputFromFile (String fileName) throws IOException {
         file = new File(fileName);
         if ( ! file.exists() ) {
-            throw new IOException("Absent file " + fileName);
+            throw new IOException("fichier absent " + fileName);
         }
     }
     public InputFromFile (File file) {

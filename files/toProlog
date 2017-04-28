@@ -1,1 +1,1 @@
-prog([var("toto",int),set("toto",mul(add(2 , 4) , 4)),while(lt(toto , 20),[set("toto",-1),if(eq(toto , -1),[set("toto",0)],[set("toto",20)])])])
+prog([const("n",int,42),var("i",int),set("i",div(7 , 7)),while(lt(i , 5),[var("j",int),set("j",add(3 , 1)),set("i",add(i , 1))])])

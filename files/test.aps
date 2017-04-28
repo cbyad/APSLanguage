@@ -1,48 +1,14 @@
-/*
-[ 	VAR t int; 
-	CONST xyz2 int 500;
-	VAR toto bool ;
-	SET toto false ;
-	SET t (add (sub 4 (eq true false) ) (div 0 (mul -3 5))) ;
-
-	WHILE (not true)
-			[ SET t (add 2 2 ) ;
-
-			IF false
-				[SET a true]
-				[SET a false]
-			]
-]
-*/
-
-[
-	VAR toto int ;
- 	SET toto (mul (add 2 4) 4);
- 	
- 	WHILE (lt toto 20) [
- 	 
-			SET toto -1;
-
-			IF (eq toto -1)
-				[SET toto 0]
-				[SET toto 20]
-	]
- 	
- 	
-]
-
-/*
-
 [
   CONST n int 42;
-  VAR xee int;
-  VAR eer int;
+  VAR i int;
 
-  SET xe (div 7 2);
-  WHILE (lt 3 3)
+  SET i (div 7 7);
+  WHILE (lt i 5)
     [
-      SET r 3;
-      SET x (div 4 2)
+    VAR j int ;
+    SET j (add 3 1);
+    
+      SET i (add i 1)
     ]
 ]
-*/
+

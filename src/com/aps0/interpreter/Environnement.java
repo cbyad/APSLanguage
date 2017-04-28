@@ -10,7 +10,6 @@ public class Environnement implements Cloneable{ // ident-->val+add(object)
 	private HashMap<String, Object> env;
 
 	
-
 	public Environnement() {
 		env= new HashMap<String, Object>() ;
 
@@ -35,14 +34,8 @@ public class Environnement implements Cloneable{ // ident-->val+add(object)
 
 	@Override
 	public String toString() {
-		
-		StringBuilder str = new StringBuilder();
-		str.append("Environnement---->\n");
-		str.append(env);
-		 return str.toString();
-		
+		return "Environnement---->"+env ;
 	}
-	
-	
+
 
 }

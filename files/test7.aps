@@ -1,0 +1,7 @@
+[
+CONST a int 1;
+CONST f (int -> int) [x:int](add x a);
+VAR r int;
+CONST a int 42;
+SET x (f 5)
+]

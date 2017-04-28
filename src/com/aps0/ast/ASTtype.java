@@ -5,6 +5,10 @@ import com.aps0.interfaces.IASTtype;
 public class ASTtype extends ASTnamed implements IASTtype
 {
 	
+	
+	
+	
+	
 	public  ASTtype(String name) {
 		super(name);
 	}

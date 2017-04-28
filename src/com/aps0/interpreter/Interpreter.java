@@ -14,12 +14,12 @@ public class Interpreter {
 	IASTprogram prog ;
 	Memoire memoire = new Memoire() ;
 	Environnement environnement = new Environnement() ;
-	
-	
+
+
 	public void execute(IASTprogram prog){
 		prog.eval(environnement, memoire);
 	}
-	
+
 	public Interpreter(String fileName) {
 
 		IASTfactory factory = new ASTfactory();
@@ -36,13 +36,10 @@ public class Interpreter {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public static void main(String[] args) {
-		new Interpreter(args[0]);
-		System.out.println(234567899);
+		new Interpreter("files/test.aps");
+
 	}
-	
-	
-	
-	
+
 }

@@ -1,0 +1,14 @@
+[ 	VAR t int; 
+	CONST xyz2 int 500;
+	VAR toto bool ;
+	SET toto false ;
+	SET t (add (sub 4 (eq true false) ) (div 0 (mul -3 5))) ;
+
+	WHILE (not true)
+			[ SET t (add 2 2 ) ;
+
+			IF false
+				[SET a true]
+				[SET a false]
+			]
+]

@@ -8,13 +8,13 @@ import com.aps0.interpreter.Memoire;
 
 public class ASTconstantDeclaration extends ASTdeclaration 
 implements IASTconstantDeclaration{
-	
+
 	protected String description ;
 	protected IASTexpression expression ;
 	protected IASTtype type;
-	
-	
-	
+
+
+
 	public ASTconstantDeclaration(String description,
 			IASTexpression expression, IASTtype type) {
 		super();
@@ -49,7 +49,4 @@ implements IASTconstantDeclaration{
 		System.out.println(env + "\n" + mem);
 	}
 
-	
-	
-	
 }
